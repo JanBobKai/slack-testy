@@ -15,7 +15,7 @@ module.exports = (robot) ->
 +      content: [
 +        text: "Attachement Demo Text"
 +        fallback: "Fallback Text"
-+        pretext: "This is Pretext"
++        pretext: "This is TextPretext"
 +        color: "#FF0000"
 +        #fields: fields
 +      ,
