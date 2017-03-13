@@ -10,23 +10,23 @@
 
 module.exports = (robot) ->
 
-  payload =
-      message: msg.message
-       content: [
-         text: "Attachement Demo Text"
-         fallback: "Fallback XtText"
-         pretext: "This is TextPretext"
-         color: "#FF0000"
-         #fields: fields
-       ,
-         text: "Attachement Demo Text 2"
-         fallback: "Fallback Text 2"
-         pretext: "This is another attachment"
-         color: "#00FF00"
-         #fields: fields
-      ]
-robot.hear /'attachtest' /i, (res) ->
-    robot.emit 'slack-attachment', payload
+#  payload =
+ #     message: msg.message
+#       content: [
+#         text: "Attachement Demo Text"
+#         fallback: "Fallback XtText"
+#         pretext: "This is TextPretext"
+#         color: "#FF0000"
+#         #fields: fields
+#       ,
+#         text: "Attachement Demo Text 2"
+#         fallback: "Fallback Text 2"
+#         pretext: "This is another attachment"
+#         color: "#00FF00"
+#         #fields: fields
+#      ]
+#robot.hear /'attachtest' /i, (res) ->
+#    res.emit 'slack-attachment', payload
   #robot.hear /'badger' /i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
