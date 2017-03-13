@@ -15,8 +15,7 @@ module.exports = (robot) ->
 
 # post the message
 
-#robot.hear /'attachtest' /i, (res) ->
-  res.
+#robot.hear /'attachtest' /i, (res) ->#
   
 #  payload =
 #     message: msg.message
