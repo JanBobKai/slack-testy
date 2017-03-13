@@ -10,8 +10,16 @@
 
 module.exports = (robot) ->
 
+
+
+
+# post the message
+
+#robot.hear /'attachtest' /i, (res) ->
+  res.
+  
 #  payload =
- #     message: msg.message
+#     message: msg.message
 #       content: [
 #         text: "Attachement Demo Text"
 #         fallback: "Fallback XtText"
