@@ -17,5 +17,6 @@
   "hubot-google-translate",
   "hubot-team",
   "hubot-heroku-keepalive",
-  "hubot-auth"
+  "hubot-auth",
+  "hubot-oac"
 ]
