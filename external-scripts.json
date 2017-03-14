@@ -16,7 +16,5 @@
   "hubot-youtube",
   "hubot-google-translate",
   "hubot-team",
-  "hubot-heroku-keepalive",
-  "hubot-scripts",
-  "hubot-auth"
+  "hubot-heroku-keepalive"
 ]
