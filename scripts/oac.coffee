@@ -15,15 +15,45 @@
 # Author:
 #   Kaimodo
 module.exports = (robot) ->
-    robot.hear /'attachtest' /i, (res) ->
-        robot.emit 'slack-attachment',
-            channel: "general"
-            username: "CustomBotName"
-            icon_url: "https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png"
-            content:
-                fallback: "fallback"
-                title: "works now"
-                title_link: "https://github.com"
-                text: "Shows up"
-                image_url: "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png"
-                color: "#111111"
+  robot.respond /testk/, (res) ->
+    room = res.envelope.room
+    timestamp = new Date/1000|0
+
+    # https://api.slack.com/docs/message-attachments
+    attachments = [
+      {
+        fallback: 'デプロイしたよ',
+        color: 'good',
+        pretext: 'デプロイしたよ',
+        fields: [
+          {
+            title: 'Command',
+            value: 'cap staging deploy',
+            short: false
+          }
+          {
+            title: 'Stage',
+            value: 'staging',
+            short: true
+          },
+          {
+            title: 'Status',
+            value: '0',
+            short: true
+          },
+          {
+            title: 'Output',
+            value: '12323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323',
+            short: false
+          }
+        ],
+        footer: 'hubot',
+        footer_icon: 'https://hubot.github.com/assets/images/layout/hubot-avatar@2x.png',
+        ts: timestamp
+      }
+    ]
+
+    options = { as_user: true, link_names: 1, attachments: attachments }
+
+    client = robot.adapter.client
+    client.web.chat.postMessage(room, '', options)
