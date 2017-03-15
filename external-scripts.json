@@ -18,5 +18,6 @@
   "hubot-team",
   "hubot-heroku-keepalive",
   "hubot-auth",
-  "hubot-oac"
+  "hubot-oac",
+  "hubot-cron"
 ]
