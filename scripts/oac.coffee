@@ -15,45 +15,61 @@
 # Author:
 #   Kaimodo
 module.exports = (robot) ->
-  robot.respond /testk/, (res) ->
+  robot.respond /dng.t6/, (res) ->
     room = res.envelope.room
     timestamp = new Date/1000|0
 
     # https://api.slack.com/docs/message-attachments
     attachments = [
       {
-        fallback: 'デプロイしたよ',
+        fallback: 'dngT6',
         color: 'good',
-        pretext: 'デプロイしたよ',
+        pretext: 'Drops aus allen T6 Kerkern',
         fields: [
           {
-            title: 'Command',
-            value: 'cap staging deploy',
-            short: false
+            title: 'RTL Navid',
+            value: 'Schulter',
+            short: true
           }
           {
-            title: 'Stage',
-            value: 'staging',
+            title: 'RTL Alabasta',
+            value: 'Kopf',
             short: true
           },
           {
-            title: 'Status',
-            value: '0',
+            title: 'RTL LB',
+            value: 'beides',
             short: true
-          },
-          {
-            title: 'Output',
-            value: '12323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323123231232312323',
-            short: false
           }
-        ],
-        footer: 'hubot',
-        footer_icon: 'https://hubot.github.com/assets/images/layout/hubot-avatar@2x.png',
-        ts: timestamp
+        ]        
+      },{
+        color: 'blue',
+        fields: [
+          {
+            title: 'DSL',
+            value: 'Hose und Schuhe',
+            short: true
+          }
+        ]   
+      },{
+        color: 'red',
+        fields: [
+          {
+            title: 'DDL FB',
+            value: 'Hand',
+            short: true
+          },{
+            title: 'DDL LB',
+            value: 'Hand & Brust',
+            short: true
+          }
+        ]   
       },{
           fallback: 'test',
-          color: 'danger',
-          text: 'bla';
+          color: 'grey',
+          footer: 'hubot',
+          footer_icon: 'https://hubot.github.com/assets/images/layout/hubot-avatar@2x.png',
+          ts: timestamp
       }
     ]
 
