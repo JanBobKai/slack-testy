@@ -10,7 +10,7 @@
 #
 #
 # Notes:
-#
+# http://qiita.com/taka0125/items/6260bc7cfc1a5f6026f1
 #
 # Author:
 #   Kaimodo
@@ -50,6 +50,10 @@ module.exports = (robot) ->
         footer: 'hubot',
         footer_icon: 'https://hubot.github.com/assets/images/layout/hubot-avatar@2x.png',
         ts: timestamp
+      },{
+          fallback: 'test',
+          color: 'danger',
+          text: 'bla';
       }
     ]
 
