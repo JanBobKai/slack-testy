@@ -43,7 +43,7 @@ module.exports = (robot) ->
           }
         ]        
       },{
-        color: 'blue',
+        color: 'warning',
         fields: [
           {
             title: 'DSL',
@@ -52,7 +52,7 @@ module.exports = (robot) ->
           }
         ]   
       },{
-        color: 'red',
+        color: 'danger',
         fields: [
           {
             title: 'DDL FB',
