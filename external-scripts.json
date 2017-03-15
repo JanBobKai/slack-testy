@@ -19,5 +19,6 @@
   "hubot-heroku-keepalive",
   "hubot-auth",
   "hubot-oac",
-  "hubot-cron"
+  "hubot-cron",
+  "hubot-slack-attachment"
 ]
