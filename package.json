@@ -5,7 +5,7 @@
   "author": "Kaimodo <kaikrutscho@gmail.com>",
   "description": "Schlampe für alles",
   "dependencies": {
-    "hubot": "^2.19.0",
+    "hubot": "^4.3.2",
     "hubot-ambush": "0.0.3",
     "hubot-auth": "^2.1.0",
     "hubot-cron": "^0.2.9",
