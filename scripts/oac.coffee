@@ -16,13 +16,14 @@
 #   Kaimodo
 module.exports = (robot) ->
     robot.hear /'attachtest' /i, (res) ->
-        res.emit 'slack-attachment',
-            message: msg.message
+        robot.emit 'slack-attachment',
+            channel: "general"
+            username: "CustomBotName"
+            icon_url: "https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png"
             content:
-                # see https://api.slack.com/docs/attachments
-                text: "Attachment text"
-                fallback: "Attachment fallback"
-                fields: [{
-                title: "Field title"
-                value: "Field value"
-                }]
+                fallback: "fallback"
+                title: "works now"
+                title_link: "https://github.com"
+                text: "Shows up"
+                image_url: "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png"
+                color: "#111111"
