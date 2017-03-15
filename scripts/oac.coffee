@@ -26,7 +26,3 @@ module.exports = (robot) ->
                 title: "Field title"
                 value: "Field value"
                 }]
-            channel: "#general" # optional, defaults to message.room
-            username: "foobot" # optional, defaults to robot.name
-            icon_url: "..." # optional
-            icon_emoji: "..." # optional 
