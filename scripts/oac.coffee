@@ -7,7 +7,8 @@
 #   None
 #
 # Commands:
-#
+#   dng.t6
+#   kosten.t6
 #
 # Notes:
 # http://qiita.com/taka0125/items/6260bc7cfc1a5f6026f1
