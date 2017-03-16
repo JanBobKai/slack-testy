@@ -85,17 +85,17 @@ module.exports = (robot) ->
     # https://api.slack.com/docs/message-attachments
     attachments = [
       {
-        fallback: 'kostenT6',
+        fallback: 'kosten.T6',
         color: 'good',
         pretext: 'Kosten der Ausrüstung T6',
         fields: [
           {
             title: 'Alle Rezepte',
-            value: '750 Souls',
+            value: '750 :item_soul:',
             short: true
           },{
             title: 'Umwandlung',
-            value: '9 Drachenjade = 1 Essenz'
+            value: '9 :item_djade: = 1 :item_dessenz:'
           }
         ]        
       },{
@@ -103,7 +103,7 @@ module.exports = (robot) ->
         fields: [
           {
             title: 'Crafting Gear',
-            value: '40 Materialien, 25 Essenzen',
+            value: '40 Materialien, 25 :item_dessenz:',
             short: true
           }
         ]   
@@ -112,7 +112,7 @@ module.exports = (robot) ->
         fields: [
           {
             title: 'Crafting Zubehör',
-            value: '30 Materialien, 20 Essenzen',
+            value: '30 Materialien, 20 :item_dessenz:',
             short: true
           }
         ]   
