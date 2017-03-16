@@ -67,8 +67,8 @@ module.exports = (robot) ->
       },{
           fallback: 'test',
           color: 'grey',
-          footer: 'hubot',
-          footer_icon: 'https://hubot.github.com/assets/images/layout/hubot-avatar@2x.png',
+          footer: 'resis',
+          footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
           ts: timestamp
       }
     ]
