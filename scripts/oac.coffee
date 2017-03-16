@@ -15,7 +15,7 @@
 # Author:
 #   Kaimodo
 module.exports = (robot) ->
-  robot.respond /dng.t6/, (res) ->
+  robot.hear /dng.t6/, (res) ->
     room = res.envelope.room
     timestamp = new Date/1000|0
 
@@ -61,6 +61,58 @@ module.exports = (robot) ->
           },{
             title: 'DDL LB',
             value: 'Hand & Brust',
+            short: true
+          }
+        ]   
+      },{
+          fallback: 'test',
+          color: 'grey',
+          footer: 'resis',
+          footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
+          ts: timestamp
+      }
+    ]
+
+    options = { as_user: true, link_names: 1, attachments: attachments }
+
+    client = robot.adapter.client
+    client.web.chat.postMessage(room, '', options)
+  
+  robot.hear /kosten.t6/, (res) ->
+    room = res.envelope.room
+    timestamp = new Date/1000|0
+
+    # https://api.slack.com/docs/message-attachments
+    attachments = [
+      {
+        fallback: 'kostenT6',
+        color: 'good',
+        pretext: 'Kosten der Ausrüstung T6',
+        fields: [
+          {
+            title: 'Alle Rezepte',
+            value: '750 Souls',
+            short: true
+          },{
+            title: 'Umwandlung',
+            value: '9 Drachenjade = 1 Essenz'
+          }
+        ]        
+      },{
+        color: 'warning',
+        fields: [
+          {
+            title: 'Crafting Gear',
+            value: '40 Materialien, 25 Essenzen',
+            short: true
+          }
+        ]   
+      },{
+        color: 'danger',
+        fields: [
+          {
+            title: 'Crafting Zubehör',
+            value: '30 Materialien, 20 Essenzen',
             short: true
           }
         ]   
