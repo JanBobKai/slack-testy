@@ -16,56 +16,53 @@
 #   Kaimodo
 module.exports = (robot) ->
     robot.hear /dng.chars/, (res) ->
-        room = res.envelope.room
-        timestamp = new Date/1000|0
+    room = res.envelope.room
+    timestamp = new Date/1000|0
 
-        # https://api.slack.com/docs/message-attachments
-        attachments = [
-        {
-            fallback: 'Gebrauchte Chars je Dungeon',
-            color: 'danger',
-            pretext: 'Gebrauchte Klassen je Dungeon',
-            fields: [
-            {
-                title: 'DSL',
-                value: ':heal: | :mili: oder :tank: ',
-                short: true
-            },{
-                title: 'DDL',
-                value: ':heal: | :mili: | :tank: und ein DD nach Wahl'
-            },{
-                title: 'RTL',
-                value: ':heal: | :mage: | :tank: | :tank:'
-            }
-            ]        
-        },{
-            color: 'warning',
-            fields: [
-            {
-                title: 'SFL',
-                value: ':heal: | :mili: | :tank: und ein DD nach Wahl',
-                short: true
-            }
-            ]   
-        },{
-            color: 'good',
-            fields: [
-            {
-                title: 'Alle anderen Kerker',
-                value: ':heal: | :tank: und zwei DD's nach Wahl',
-                short: true
-            }
-            ]   
-        },{
-            fallback: 'test',
-            color: 'grey',
-            footer: 'resis',
-            footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
-            ts: timestamp
-        }
-        ]
+    # https://api.slack.com/docs/message-attachments
+    attachments = [
+      {
+        fallback: 'dungeonChars',
+        color: 'danger',
+        pretext: 'Gebrauchte Charaktere je Dungeon',
+        fields: [
+          {
+            title: 'DDL',
+            value: ':heal: | :mili: | :tank: und ein DD nach Wahl',
+            short: true
+          },{
+            title: 'RTL',
+            value: ':heal: | :mage: | :tank: | :tank:'
+          }
+        ]        
+      },{
+        color: 'warning',
+        fields: [
+          {
+            title: 'DSL',
+            value: ':heal: | :mili: oder :tank: ',
+            short: true
+          }
+        ]   
+      },{
+        color: 'good',
+        fields: [
+          {
+            title: 'SFL',
+            value: ':heal: | :mili: | :tank: und ein DD nach Wahl',
+            short: true
+          }
+        ]   
+      },{
+          fallback: 'test',
+          color: 'grey',
+          footer: 'resis',
+          footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
+          ts: timestamp
+      }
+    ]
 
-        options = { as_user: true, link_names: 1, attachments: attachments }
+    options = { as_user: true, link_names: 1, attachments: attachments }
 
-        client = robot.adapter.client
-        client.web.chat.postMessage(room, '', options)
+    client = robot.adapter.client
+    client.web.chat.postMessage(room, '', options)
