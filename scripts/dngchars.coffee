@@ -32,7 +32,7 @@ module.exports = (robot) ->
             short: true
           },{
             title: 'RTL',
-            value: ':heal: | :mage: | :tank: | :tank:'
+            value: ':heal: | :gazer: | :tank: | :tank:'
           }
         ]        
       },{
