@@ -28,8 +28,7 @@
     "hubot-slack": "^4.3.3",
     "hubot-slack-attachment": "^1.0.1",
     "hubot-team": "^2.0.0",
-    "hubot-youtube": "^1.0.2",
-    "hubot-timer": "1.0.0"
+    "hubot-youtube": "^1.0.2"
   },
   "engines": {
     "node": "0.10.x"
