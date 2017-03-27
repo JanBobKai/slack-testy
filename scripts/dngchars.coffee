@@ -15,7 +15,7 @@
 # Author:
 #   Kaimodo
 module.exports = (robot) ->
-    robot.hear /dng.chars/i, (res) ->
+    robot.hear /dng.chars/, (res) ->
         room = res.envelope.room
         timestamp = new Date/1000|0
 
