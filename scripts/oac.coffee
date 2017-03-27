@@ -131,7 +131,7 @@ module.exports = (robot) ->
     client = robot.adapter.client
     client.web.chat.postMessage(room, '', options)
 
-robot.hear /dng.chars/ , (res) ->
+robot.hear /dng.chars/, (res) ->
     room = res.envelope.room
     timestamp = new Date/1000|0
 
