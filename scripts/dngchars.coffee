@@ -15,7 +15,7 @@
 # Author:
 #   Kaimodo
 module.exports = (robot) ->
-    robot.hear /dng.chars/, (res) ->
+    robot.hear /dng.chars/i, (res) ->
         room = res.envelope.room
         timestamp = new Date/1000|0
 
@@ -52,7 +52,7 @@ module.exports = (robot) ->
             fields: [
             {
                 title: 'Alle anderen Kerker',
-                value: ':heal: | :tank: und zwei DD's nach Wahl,
+                value: ':heal: | :tank: und zwei DD's nach Wahl',
                 short: true
             }
             ]   
