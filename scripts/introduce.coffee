@@ -11,24 +11,24 @@
 
 module.exports = (robot) ->
 
-  robot.respond /meineKlasse (.*)/i, (msg) ->
-    intro = msg.match[1].trim()
+  robot.respond /meineKlasse (.*)/i, (res) ->
+    intro = res.match[1].trim()
     if not intro?
-      msg.reply 'Darf nicht leer sein'
+      res.reply 'Darf nicht leer sein'
       return
-    user = msg.message.user
+    user = res.message.user
     robot.brain.set 'intro-' + user.id, intro
-    msg.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
+    res.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
 
-  robot.respond /klasse (?!me as )@?([\w .\-]+)\?*$/i, (msg) ->
-    name = msg.match[1].trim()
+  robot.respond /klasse (?!me as )@?([\w .\-]+)\?*$/i, (res) ->
+    name = res.match[1].trim()
     users = robot.brain.usersForFuzzyName(name)
     if users.length is 1
       user = users[0]
       intro = robot.brain.get 'intro-' + user.id
       if intro?
-        msg.reply intro
+        res.reply intro
       else
-        msg.reply "#{name} hat noch keine Klasse festgelegt"
+        res.reply "#{name} hat noch keine Klasse festgelegt"
     else
-msg.reply "Ich finde niemand der #{name} heist."
+res.reply "Ich finde niemand der #{name} heist."
