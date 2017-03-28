@@ -20,4 +20,4 @@ module.exports = (robot) ->
     res.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
 
   robot.respond /klasse ([\w.-]*):? (.*)/i, (msg) ->
-    msg.send 'Grrrr'
+    name = res.match[1].trim()
