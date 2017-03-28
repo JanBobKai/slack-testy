@@ -1,34 +1,34 @@
 # Description:
-#   Klassenbestimmung der User
+#   Introduction of users
 #
 # Commands:
-#   hubot meineKlasse <Klasse> - Setzt deine eigene Klasse fest
-#   hubot klasse <Benutzername> - Zeige die Klasse des Benutzers an
+#   hubot introduce me as <introduction> - Set your introduction
+#   hubot introduce <username> - Get users introduction
 #
 # Author:
-#   Kaimodo inc
+#   webjay
 
 
 module.exports = (robot) ->
 
-  robot.respond /meineKlasse (.*)/i, (res) ->
-    intro = res.match[1].trim()
+  robot.respond /introduce me as (.*)/i, (msg) ->
+    intro = msg.match[1].trim()
     if not intro?
-      res.reply 'Darf nicht leer sein'
+      msg.reply 'Your introduction is a bit too short.'
       return
-    user = res.message.user
+    user = msg.message.user
     robot.brain.set 'intro-' + user.id, intro
-    res.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
+    msg.reply "Thank you #{user.name}, I will introduce you as: #{intro}"
 
-  robot.respond /klasse (?!me as )@?([\w .\-]+)\?*$/i, (res) ->
-    name = res.match[1].trim()
+  robot.respond /introduce (?!me as )@?([\w .\-]+)\?*$/i, (msg) ->
+    name = msg.match[1].trim()
     users = robot.brain.usersForFuzzyName(name)
     if users.length is 1
       user = users[0]
       intro = robot.brain.get 'intro-' + user.id
       if intro?
-        res.reply intro
+        msg.reply intro
       else
-        res.reply "#{name} hat noch keine Klasse festgelegt"
+        msg.reply "I do not have an introduction of #{name} yet."
     else
-res.reply "Ich finde niemand der #{name} heist."
+msg.reply "I could not find #{name}."
