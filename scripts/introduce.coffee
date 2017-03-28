@@ -29,3 +29,5 @@ module.exports = (robot) ->
         res.reply intro
       else
         res.reply "#{name} hat noch keine Klasse festgelegt"
+    else
+      res.reply "Ich finde niemand der #{name} heist."
