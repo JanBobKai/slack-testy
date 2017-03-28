@@ -6,7 +6,7 @@
 #   hubot klasse <Benutzername> - Zeige die Klasse des Benutzers an
 #
 # Author:
-#   Kaimodo
+#   Kaimodo inc
 
 
 module.exports = (robot) ->
