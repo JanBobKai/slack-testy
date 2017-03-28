@@ -19,7 +19,7 @@ module.exports = (robot) ->
     robot.brain.set 'intro-' + user.id, intro
     res.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
 
-  robot.respond /klasse (?!me as )@?([\w .\-]+)\?*$/i, (msg) ->
+  robot.respond /klasse (?!me as )@?([\w .\-]+)\?*$/i, (res) ->
     name = res.match[1].trim()
     users = robot.brain.usersForFuzzyName(name)
     if users.length is 1
