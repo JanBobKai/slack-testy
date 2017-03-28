@@ -20,14 +20,4 @@ module.exports = (robot) ->
     res.reply "Danke #{user.name}, du hast jetzt die Klasse: #{intro}"
 
   robot.respond /klasse ([\w.-]*):? (.*)/i, (msg) ->
-    name = msg.match[1].trim()
-    users = robot.brain.usersForFuzzyName(name)
-    if users.length is 1
-      user = users[0]
-      intro = robot.brain.get 'intro-' + user.id
-      if intro?
-        msg.reply intro
-      else
-        msg.reply "#{name} hat noch keine Klasse festgelegt"
-    else
-msg.reply "Ich finde niemand der #{name} heist."
+    msg.send 'Grrrr'
