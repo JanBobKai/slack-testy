@@ -21,3 +21,4 @@ module.exports = (robot) ->
 
   robot.respond /klasse ([\w.-]*):? (.*)/i, (msg) ->
     name = res.match[1].trim()
+    users = robot.brain.usersForFuzzyName(name)
