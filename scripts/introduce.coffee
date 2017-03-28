@@ -20,7 +20,7 @@ module.exports = (robot) ->
     robot.brain.set 'intro-' + user.id, intro
     msg.reply "Thank you #{user.name}, I will introduce you as: #{intro}"
 
-  robot.respond /introduce (?!me as )@?([\w .\-]+)\?*$/i, (msg) ->
+  robot.hear /introduce (?!me as )@?([\w .\-]+)\?*$/i, (msg) ->
     name = msg.match[1].trim()
     users = robot.brain.usersForFuzzyName(name)
     if users.length is 1
