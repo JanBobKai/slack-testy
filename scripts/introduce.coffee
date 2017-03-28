@@ -27,3 +27,5 @@ module.exports = (robot) ->
       intro = robot.brain.get 'intro-' + user.id
       if intro?
         res.reply intro
+      else
+        res.reply "#{name} hat noch keine Klasse festgelegt"
