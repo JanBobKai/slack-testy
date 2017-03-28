@@ -25,3 +25,5 @@ module.exports = (robot) ->
     if users.length is 1
       user = users[0]
       intro = robot.brain.get 'intro-' + user.id
+      if intro?
+        res.reply intro
