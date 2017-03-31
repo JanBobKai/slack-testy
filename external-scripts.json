@@ -1,6 +1,7 @@
 [
   "hubot-diagnostics",
   "hubot-help",
+  "hubot-heroku",
   "hubot-heroku-keepalive",
   "hubot-google-images",
   "hubot-google-translate",
@@ -17,7 +18,6 @@
   "hubot-google-translate",
   "hubot-googleapi",
   "hubot-team",
-  "hubot-heroku-keepalive",
   "hubot-auth",
   "hubot-oac",
   "hubot-cron",
