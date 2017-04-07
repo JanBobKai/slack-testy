@@ -7,7 +7,7 @@
   "hubot-google-translate",
   "hubot-pugme",
   "hubot-maps",
-  "hubot-redis-brain",
+  "hubot-postgres-brain",
   "hubot-rules",
   "hubot-shipit",
   "hubot-ambush",
