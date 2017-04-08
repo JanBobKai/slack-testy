@@ -15,7 +15,7 @@ module.exports = (robot) ->
 
   robot.hear /reshead (.*)/i, (response) ->
     artistName = response.match[1].toLowerCase()
-    if artistName is ""
+    if artistName is "Kaimodo"
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
