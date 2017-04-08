@@ -1,36 +1,29 @@
 # Description
-#   grabs an artists top tracks
+#   Item aus Datenbank holen
 #
 # Configuration:
-#   None needed. Uses Spotify Public API and my Last.fm API key. Youre welcome.
+#   None needed. 
 #
 # Commands:
-#   spotify ARTIST NAME - <returns the artists top tracks Spotify URL>
-#   jam to ARTIST NAME - <returns the artist top track Spotify URL>
+#   reshead <Nummer>
+#
 #
 # Author:
-#   Lucas Moore <hey@thelucasmoore.com>
+#   Kaimodo
 
 module.exports = (robot) ->
 
-  robot.hear /spotify (.*)/i, (response) ->
+  robot.hear /reshead (.*)/i, (response) ->
     artistName = response.match[1].toLowerCase()
-    if artistName is "hoobastank"
-      response.send "Sorry, I only search for music."
+    if artistName is ""
+      response.send "Item Nr 1-8800“
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{searchName}&api_key=66e74ba0c979b3e6f0613f6830fc21a1&format=json")
+      robot.http("https://resishead.firebaseio.com/{searchName}.json?print=pretty")
         .get() (err, res, body) ->
           if err
             response.send "Oh noes! #{err}"
             return
           data = JSON.parse body
-          bio = data.artist.bio.summary.split("<a")
-          response.send "#{bio[0]}"
-          robot.http("https://api.spotify.com/v1/search?q=#{searchName}&type=artist")
-            .get() (err, res, body) ->
-              if err
-                response.send "Oh noes! #{err}"
-                return
-              data = JSON.parse body
-response.send "#{data.artists.items[0].external_urls.spotify}"
+ 
+response.send "#{data}"
