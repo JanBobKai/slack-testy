@@ -11,7 +11,7 @@
 # Author:
 #   Kaimodo
 #   response.send "#{data.url.items[0]}"
-
+#   https://resishead.firebaseio.com/.json?orderBy="$key"&startAt="Zith"&endAt="b\uf8ff"&print=pretty
 module.exports = (robot) ->
 
   robot.hear /reshead (.*)/i, (response) ->
