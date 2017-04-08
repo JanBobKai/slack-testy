@@ -27,5 +27,5 @@ module.exports = (robot) ->
             return
           data = JSON.parse body
           response.send "Url: #{data.url}\n
-                        "BildUrl: #{data.VBild}\n
-                        "Name: #{data.Name}"
+                        BildUrl: #{data.VBild}\n
+                        Name: #{data.Name}"
