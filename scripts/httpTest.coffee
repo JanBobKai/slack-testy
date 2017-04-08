@@ -19,11 +19,11 @@ module.exports = (robot) ->
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("https://resishead.firebaseio.com/#{searchName}.json?print=pretty")
+      robot.http("https://resishead.firebaseio.com/#{searchName}.json")
         .get() (err, res, body) ->
           if err
             response.send "Oh noes! #{err}"
             return
           data = JSON.parse body
  
-response.send "#{data}"
+response.send "#{data.url.items[0]}"
