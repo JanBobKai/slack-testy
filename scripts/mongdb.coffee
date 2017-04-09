@@ -1,5 +1,6 @@
 # Description
 #   Item aus Datenbank holen
+# https://www.tutorialspoint.com/coffeescript/coffeescript_mongodb.htm
 #
 # Configuration:
 #   MLAB_API_KEY Your Mlab Api Key
@@ -33,7 +34,8 @@ MongoClient.connect url, (err, db) ->
     #Finding Data
     col = db.collection('items_de.oac-head.com_2')    
     #Inserting Documents
-    col.find({Name: 'Urkraft'}).toArray (err, result)->
+    #findOne({"username" : /.*son.*/i});
+    col.findOne({Name: /.*zit.*/i}).toArray (err, result)->
       if err
         console.log err
       else 
