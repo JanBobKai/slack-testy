@@ -25,17 +25,9 @@
 #   https://reshead-fbf2.restdb.io/rest/items-de-oac-head-com?q={ "Name": {"$regex" :"#{searchName}"}}&max=1
 #  https://resishead.firebaseio.com/#{searchName}.json?print=pretty
 # Require Firebase dependencies
-Firebase                = require 'firebase'
-FirebaseTokenGenerator = require 'firebase-token-generator'
 
 #main
 module.exports = (robot) ->
-
-  
-  # Do not load unless configured
-  return robot.logger.warning "firebase-brain: FIREBASE_URL not set. Not attempting to load FireBase " unless process.env.FIREBASE_URL?
-
-  robot.logger.info "firebase-brain: Connecting to FireBase at #{process.env.FIREBASE_URL} "
 
   robot.hear /reshead (.*)/i, (response) ->
     artistName = response.match[1].toLowerCase()
