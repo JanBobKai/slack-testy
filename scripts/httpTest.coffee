@@ -44,7 +44,7 @@ module.exports = (robot) ->
     else
       searchName = artistName.replace(" ", "+")
       robot.http("#{process.env.FIREBASE_URL}#{searchName}.json?print=pretty")
-        .header('Content-Type', 'application/json')
+        .header('Content-Type', 'application/json', 'charset=utf-8')
         .get() (err, res, body) ->
           if err
             response.send "Oh noes! #{err}"
