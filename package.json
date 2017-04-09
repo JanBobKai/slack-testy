@@ -6,8 +6,7 @@
   "description": "Schlampe für alles",
   "dependencies": {
     "hubot": "^2.19.0",
-    "firebase": "^2.2.7",
-    "firebase-token-generator": "^2.0.0",
+    "mongolab-data-api": "1.1.6",
     "hubot-ambush": "0.0.3",
     "hubot-auth": "^2.1.0",
     "hubot-cron": "^0.2.9",
