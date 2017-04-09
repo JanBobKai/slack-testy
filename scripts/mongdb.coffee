@@ -23,7 +23,7 @@ mongo = require 'mongodb'
 MongoClient = mongo.MongoClient
 
 #Preparing the URL
-url = 'mongodb://Kaimodo:' + mdbPw +'@ds157390.mlab.com:57390/resitems'
+url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
 
 #Connecting to the server
 MongoClient.connect url, (err, db) ->
