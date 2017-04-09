@@ -2,8 +2,8 @@
 #   Item aus Datenbank holen
 #
 # Configuration:
-#   FIREBASE_URL - eg https://your_firebase.firebaseio.com/hubot
-#   FIREBASE_SECRET - (optional) Authentication to FireBase
+#   MLAB_API_KEY Your Mlab Api Key
+#   
 #
 # Commands:
 #   reshead <Nummer>
@@ -24,7 +24,9 @@
 #      msg.send "#{location['lat']}, #{location['lng']}"
 #   https://reshead-fbf2.restdb.io/rest/items-de-oac-head-com?q={ "Name": {"$regex" :"#{searchName}"}}&max=1
 #  https://resishead.firebaseio.com/#{searchName}.json?print=pretty
-# Require Firebase dependencies
+#
+# Required Things
+mLab = require('mongolab-data-api')('#{process.env.MLAB_API_KEY}');
 
 #main
 module.exports = (robot) ->
