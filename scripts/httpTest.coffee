@@ -26,7 +26,7 @@
 #  https://resishead.firebaseio.com/#{searchName}.json?print=pretty
 #
 # Required Things
-var mLab = require('mongolab-data-api')('#{process.env.MLAB_API_KEY}');
+mLab = require('mongolab-data-api')('#{process.env.MLAB_API_KEY}');
 
 #main
 module.exports = (robot) ->
