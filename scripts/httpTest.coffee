@@ -25,7 +25,7 @@ module.exports = (robot) ->
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("https://reshead-fbf2.restdb.io/rest/items-de-oac-head-com?q={%20%22Name%22:%20{%22$regex%22%20:%22#{searchName}%22}}&max=1")
+      robot.http("https://reshead-fbf2.restdb.io/rest/items-de-oac-head-com?q={%20%22Name%22:%20{%22$regex%22%20:%22#{searchName}%22}}&max=1&apikey=58e978ffd52b24c621b8ddbc")
         .get() (err, res, body) ->
           if err
             response.send "Oh noes! #{err}"
