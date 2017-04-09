@@ -33,7 +33,7 @@ MongoClient.connect url, (err, db) ->
     #Finding Data
     col = db.collection('items_de.oac-head.com_2')    
     #Inserting Documents
-    col.find({_id: '58ea924edda2fb23c098bec7'}).toArray (err, result)->
+    col.find({Name: 'Urkraft'}).toArray (err, result)->
       if err
         console.log err
       else 
