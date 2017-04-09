@@ -31,4 +31,4 @@ module.exports = (robot) ->
             response.send "Oh noes! #{err}"
             return
           data = JSON.parse body
-          response.send "Werte: #{data}._id"
+          response.send "Werte: #{data._id}"
