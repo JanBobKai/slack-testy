@@ -34,9 +34,6 @@ module.exports = (robot) ->
           if res.statusCode isnt 200
             res.send "Request didn't come back HTTP 200 :("
             return
-          if res.getHeader('Content-Type') isnt 'application/json'
-            res.send "Didn't get back JSON :("
-            return
 
           data = null
           try
