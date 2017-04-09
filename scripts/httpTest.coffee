@@ -27,9 +27,9 @@ module.exports = (robot) ->
 
   
   # Do not load unless configured
-  return robot.logger.warning "firebase-brain: FIREBASE_URL not set. Not attempting to load FireBase brain." unless process.env.FIREBASE_URL?
+  return robot.logger.warning "firebase-brain: FIREBASE_URL not set. Not attempting to load FireBase " unless process.env.FIREBASE_URL?
 
-  robot.logger.info "firebase-brain: Connecting to FireBase brain at #{process.env.FIREBASE_URL} "
+  robot.logger.info "firebase-brain: Connecting to FireBase at #{process.env.FIREBASE_URL} "
 
   robot.hear /reshead (.*)/i, (response) ->
     artistName = response.match[1].toLowerCase()
@@ -37,7 +37,7 @@ module.exports = (robot) ->
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("https://resishead.firebaseio.com/#{searchName}.json?print=pretty")
+      robot.http("#{process.env.FIREBASE_URL}.json?print=pretty")
         .header('Content-Type', 'application/json')
         .get() (err, res, body) ->
           if err
@@ -50,6 +50,7 @@ module.exports = (robot) ->
           data = null
           try
             data = JSON.parse body
+            console.log body
           catch error
            res.send "Ran into an error parsing JSON :("
            return
