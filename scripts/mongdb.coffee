@@ -30,6 +30,15 @@ MongoClient.connect url, (err, db) ->
     console.log 'MongoDB: Unable to connect . Error:', err
   else
     console.log 'MongoDB: Connection established to', url
-    #Close connection
-    db.close()
+    #Finding Data
+    col = db.collection('items_de.oac-head.com_2')    
+    #Inserting Documents
+    col.find({_id: '58ea924edda2fb23c098bec7'}).toArray (err, result)->
+      if err
+        console.log err
+      else 
+      console.log 'Found:', result			
+      #Closing connection
+      db.close()
+      return
   return
