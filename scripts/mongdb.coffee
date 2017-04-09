@@ -13,7 +13,7 @@
 # Author:
 #   Kaimodo
 
-
+mdbPw = process.env.MLAB_USER_PW
 
 #Requiring the Mongodb package
 mongo = require 'mongodb'
@@ -22,7 +22,7 @@ mongo = require 'mongodb'
 MongoClient = mongo.MongoClient
 
 #Preparing the URL
-url = 'mongodb://Kaimodo:#{process.env.MLAB_USER_PW}@ds157390.mlab.com:57390/resitems'
+url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
 
 #Connecting to the server
 MongoClient.connect url, (err, db) ->
