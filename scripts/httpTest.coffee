@@ -43,7 +43,7 @@ module.exports = (robot) ->
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("#{process.env.FIREBASE_URL}#{searchName}.json?print=pretty")
+      robot.http("#{process.env.FIREBASE_URL}.json?orderB="Name"&equalTo="#{searchName}"print=pretty")
         .header('Content-Type', 'application/json')
         .get() (err, res, body) ->
           if err
