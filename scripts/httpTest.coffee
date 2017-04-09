@@ -42,4 +42,4 @@ module.exports = (robot) ->
            res.send "Ran into an error parsing JSON :("
            return
 
-          response.send "Werte: #{data[url]}"
+          response.send "Werte: #{data["url"]}"
