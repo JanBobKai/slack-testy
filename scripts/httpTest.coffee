@@ -25,7 +25,7 @@ module.exports = (robot) ->
       response.send "Item Nr 1-8800"
     else
       searchName = artistName.replace(" ", "+")
-      robot.http("https://reshead-fbf2.restdb.io/rest/items-de-oac-head-com?q={ "Name": {"$regex" :"Zit"}}&max=1&apikey=58e978ffd52b24c621b8ddbc")
+      robot.http("https://resishead.firebaseio.com/#{searchName}.json?print=pretty")
         .header('Content-Type', 'application/json')
         .get() (err, res, body) ->
           if err
@@ -42,4 +42,4 @@ module.exports = (robot) ->
            res.send "Ran into an error parsing JSON :("
            return
 
-          response.send "Werte: #{data["url"]}"
+          response.send "Werte: #{data}"
