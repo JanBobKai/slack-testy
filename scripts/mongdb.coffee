@@ -22,7 +22,7 @@ mongo = require 'mongodb'
 MongoClient = mongo.MongoClient
 
 #Preparing the URL
-url = 'mongodb://#{process.env.MLAB_USER_NAME}:#{process.env.MLAB_USER_PW}@ds157390.mlab.com:57390/resitems?ssl=true'
+url = 'mongodb://#{process.env.MLAB_USER_NAME}:#{process.env.MLAB_USER_PW}@ds157390.mlab.com:57390/resitems'
 
 #Connecting to the server
 MongoClient.connect url, (err, db) ->
