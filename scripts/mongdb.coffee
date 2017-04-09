@@ -37,7 +37,7 @@ MongoClient.connect url, (err, db) ->
     #findOne({"username" : /.*son.*/i});
     #( { field: new RegExp('acme.*corp', 'i') } )
     #find({Name : {$regex: "Zit"}})
-    col.find({ Name: /zit/i }).toArray (err, result) ->
+    col.find({ Name: "/zit/i" }).toArray (err, result) ->
       if err
         console.log err
       else
