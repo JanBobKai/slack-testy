@@ -23,7 +23,7 @@ mongo = require 'mongodb'
 MongoClient = mongo.MongoClient
 
 #Preparing the URL
-url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
+url = 'mongodb://Kaimodo:' + mdbPw +'@ds157390.mlab.com:57390/resitems'
 
 #Connecting to the server
 MongoClient.connect url, (err, db) ->
@@ -32,16 +32,16 @@ MongoClient.connect url, (err, db) ->
   else
     console.log 'MongoDB: Connection established to', url
     #Finding Data
-    col = db.collection('items_de.oac-head.com_2')    
+    col = db.collection('items_de.oac-head.com_2')
     #Inserting Documents
     #findOne({"username" : /.*son.*/i});
     #( { field: new RegExp('acme.*corp', 'i') } )
     #find({Name : {$regex: "Zit"}})
-    col.find({Name: {$regex: "Zit"}}).toArray (err, result)->
+    col.find({ Name: /.*zit.*/i }).toArray (err, result) ->
       if err
         console.log err
       else 
-      console.log 'Found:', result			
+      console.log 'Found:', result
       #Closing connection
       db.close()
       return
