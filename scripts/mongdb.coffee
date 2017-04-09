@@ -31,17 +31,15 @@ MongoClient.connect url, (err, db) ->
     console.log 'MongoDB: Unable to connect . Error:', err
   else
     console.log 'MongoDB: Connection established to', url
-    #Finding Data
+    #richtige Tabelle nehmen
     col = db.collection('items_de.oac-head.com_2')
-    #Inserting Documents
-    #findOne({"username" : /.*son.*/i});
-    #( { field: new RegExp('acme.*corp', 'i') } )
-    #find({Name : {$regex: "Zit"}})
+    
+    #Daten finden
     col.find({ Name: /zit/i } , {'limit':1}).toArray (err, result) ->
       if err
         console.log err
       else
-      console.log 'Found:', result
+      console.log 'Found:', result.Picture
       #Closing connection
       db.close()
       return
