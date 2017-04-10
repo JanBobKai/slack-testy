@@ -1,6 +1,7 @@
 # Description
 #   Item aus Datenbank holen
 # https://www.tutorialspoint.com/coffeescript/coffeescript_mongodb.htm
+# http://theholmesoffice.com/how-to-ge-data-from-mongodb-into-node-js/
 #
 # Configuration:
 #   MLAB_API_KEY Your Mlab Api Key
@@ -39,7 +40,7 @@ MongoClient.connect url, (err, db) ->
       if err
         console.log err
       else
-      console.log 'Found:', result.Picture
+      console.log 'Found:', result[0].Picture
       #Closing connection
       db.close()
       return
