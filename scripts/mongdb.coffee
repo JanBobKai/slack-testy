@@ -3,6 +3,8 @@
 # https://www.tutorialspoint.com/coffeescript/coffeescript_mongodb.htm
 # http://theholmesoffice.com/how-to-ge-data-from-mongodb-into-node-js/
 #
+# https://github.com/bryanschoeff/hubot-persist-mongo
+#
 # Configuration:
 #   MLAB_API_KEY Your Mlab Api Key
 #   MLAB_USER_NAME
