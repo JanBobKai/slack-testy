@@ -46,7 +46,7 @@ MongoClient.connect url, (err, db) ->
           searchName = artistName
 
 
-            #Daten finden
+        #Daten finden
         col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
         if err
           console.log err
@@ -64,7 +64,7 @@ MongoClient.connect url, (err, db) ->
             pretext: 'Gebrauchte Charaktere je Dungeon',
             fields: [ {
                 title: 'Name',
-                value: 'result[0].Name',
+                value: result[0].Name,
                 short: true
             }, {
                 title: 'RTL',
