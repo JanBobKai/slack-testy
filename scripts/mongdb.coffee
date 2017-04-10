@@ -59,7 +59,7 @@ module.exports = (robot) ->
             #Daten finden
             #col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
             #find({"FirstName": new RegExp(val)})
-            db.collection('items_de.oac-head.com_2').find({ Name: new RegExp(searchName)/i } , {'limit':1}).toArray (err, result) ->
+            db.collection('items_de.oac-head.com_2').find({ Name: new RegExp(searchName) } , {'limit':1}).toArray (err, result) ->
                 if err
                     console.log err
                 else
