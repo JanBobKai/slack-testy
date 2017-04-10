@@ -66,7 +66,7 @@ MongoClient.connect url, (err, db) ->
                 fields: [
                 {
                     title: 'Name',
-                    value: result[0].Name,
+                    value: 'result[0].Name',
                     short: true
                 },{
                     title: 'RTL',
