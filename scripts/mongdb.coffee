@@ -47,7 +47,7 @@ MongoClient.connect url, (err, db) ->
 
 
             #Daten finden
-            col.find({ Name: /#{searchName}/i } , {'limit':1}).toArray (err, result) ->
+            col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
                 if err
                     console.log err
                 else
