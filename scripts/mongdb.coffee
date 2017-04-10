@@ -19,7 +19,7 @@
 mongo = require 'mongodb'
     
 module.exports = (robot) ->
-    robot.hear /oac.item (.*)/i, (res) ->
+  robot.hear /oac.item (.*)/i, (res) ->
     artistName = res.match[1].toLowerCase()
     if artistName is ""
       res.send "kein Name angegeben"
