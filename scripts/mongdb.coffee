@@ -36,53 +36,51 @@ MongoClient.connect url, (err, db) ->
     col = db.collection('items_de.oac-head.com_2')
     
     module.exports = (robot) ->
-        robot.hear /oac.item (.*)/i, (res) ->
-            room = res.envelope.room
-            timestamp = new Date/1000|0
-            artistName = res.match[1].toLowerCase()
-            if artistName is ""
-             res.send "kein Name angegeben"
-            else
-            searchName = artistName
+      robot.hear /oac.item (.*)/i, (res) ->
+        room = res.envelope.room
+        timestamp = new Date/1000|0
+        artistName = res.match[1].toLowerCase()
+        if artistName is ""
+          res.send "kein Name angegeben"
+        else
+          searchName = artistName
 
 
             #Daten finden
-            col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
-                if err
-                    console.log err
-                else
-                    console.log 'Found:', result
-                #Closing connection
-                db.close()
-                return
-            return
+        col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
+        if err
+          console.log err
+        else
+          console.log 'Found:', result
+        #Closing connection
+        db.close()
+        return
+        return
 
-            # https://api.slack.com/docs/message-attachments
-            attachments = [
-            {
-                fallback: 'dungeonChars',
-                color: 'danger',
-                pretext: 'Gebrauchte Charaktere je Dungeon',
-                fields: [
-                {
-                    title: 'Name',
-                    value: 'result[0].Name',
-                    short: true
-                },{
-                    title: 'RTL',
-                    value: ':heal: | :gazer: | :tank: | :tank:'
-                }
-                ]
-            },{
-                fallback: 'test',
-                color: 'grey',
-                footer: 'resis',
-                footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
-                ts: timestamp
+        # https://api.slack.com/docs/message-attachments
+        attachments = [ {
+            fallback: 'dungeonChars',
+            color: 'danger',
+            pretext: 'Gebrauchte Charaktere je Dungeon',
+            fields: [ {
+                title: 'Name',
+                value: 'result[0].Name',
+                short: true
+            }, {
+                title: 'RTL',
+                value: ':heal: | :gazer: | :tank: | :tank:'
             }
             ]
+        }, {
+            fallback: 'test',
+            color: 'grey',
+            footer: 'resis',
+            footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
+            ts: timestamp
+        }
+        ]
 
-            options = { as_user: true, link_names: 1, attachments: attachments }
+        options = { as_user: true, link_names: 1, attachments: attachments }
 
-            client = robot.adapter.client
-            client.web.chat.postMessage(room, '', options)
+        client = robot.adapter.client
+        client.web.chat.postMessage(room, '', options)
