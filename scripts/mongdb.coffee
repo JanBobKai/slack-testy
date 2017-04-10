@@ -36,14 +36,15 @@ MongoClient.connect url, (err, db) ->
     col = db.collection('items_de.oac-head.com_2')
     
     module.exports = (robot) ->
-      robot.hear /oac.item (.*)/i, (res) ->
-        room = res.envelope.room
-        timestamp = new Date/1000|0
+      robot.hear /oac.item (.*)/i, (res) ->        
         artistName = res.match[1].toLowerCase()
         if artistName is ""
           res.send "kein Name angegeben"
         else
-          searchName = artistName
+        searchName = artistName
+        console.log 'Eingabe: ', searchName
+        room = res.envelope.room
+        timestamp = new Date/1000|0
 
 
         #Daten finden
