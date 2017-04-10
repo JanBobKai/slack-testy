@@ -37,44 +37,42 @@
 #    client.collection 'coffeescript_example', exampleFind
 #
 #Requiring the Mongodb package
-mongo = require 'mongodb'
-mdbPw = process.env.MLAB_USER_PW
+#mongo = require 'mongodb'
+mongo = require('mongodb').MongoClient
 
-#Creating a MongoClient object
-MongoClient = mongo.MongoClient
-
-#Preparing the URL
-url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
 
 #Connecting to the server
-MongoClient.connect url, (err, db) ->
-    if err
-        console.log 'MongoDB: Unable to connect . Error:', err
-    else
-        console.log 'MongoDB: Connection established to', url
-    #richtige Tabelle nehmen
-    col = db.collection('items_de.oac-head.com_2')
-        
-    module.exports = (robot) ->
-        robot.hear /oac.item (.*)/i, (res) ->
+
+    
+module.exports = (robot) ->
+    robot.hear /oac.item (.*)/i, (res) ->
+        mdbPw = process.env.MLAB_USER_PW
+        url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
+        mongo.connect url, (err, db) ->
+            if err
+                console.log 'MongoDB: Unable to connect . Error:', err
+            else
+                console.log 'MongoDB: Connection established to', url
+            #richtige Tabelle nehmen
+            #col = db.collection('items_de.oac-head.com_2')
             artistName = res.match[1].toLowerCase()
             if artistName is ""
               res.send "kein Name angegeben"
             else
             searchName = artistName
             console.log 'Eingabe: ', searchName
-            
+        
 
             #Daten finden
-            col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
+            #col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
+            db.collection('items_de.oac-head.com_2').find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
             if err
                 console.log err
             else
                 console.log 'Found:', result
             #Closing connection
-            db.close()
-            #return
-            #return
+            #db.close()
+
 
             # https://api.slack.com/docs/message-attachments
             room = res.envelope.room
