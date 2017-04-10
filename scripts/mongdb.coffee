@@ -15,6 +15,25 @@
 # Author:
 #   Kaimodo
 
+
+#mongo = require 'mongodb'
+#
+#server = new mongo.Server "127.0.0.1", 27017, {}
+#
+#client = new mongo.Db 'test', server, {w:1}
+#
+#exampleFind = (dbErr, collection) ->
+#    console.log "Unable to access database: #{dbErr}" if dbErr
+#    collection.find({ _id: "my_favorite_latte" }).nextObject (err, result) ->
+#        if err
+#            console.log "Unable to find record: #{err}"
+#        else
+#            console.log result # => {  id: "my_favorite_latte", flavor: "honeysuckle" }
+#        client.close()
+#
+#client.open (err, database) ->
+#    client.collection 'coffeescript_example', exampleFind
+#
 #Requiring the Mongodb package
 mongo = require 'mongodb'
 mdbPw = process.env.MLAB_USER_PW
@@ -52,8 +71,8 @@ MongoClient.connect url, (err, db) ->
                 console.log 'Found:', result
             #Closing connection
             db.close()
-            return
-            return
+            #return
+            #return
 
             # https://api.slack.com/docs/message-attachments
             room = res.envelope.room
