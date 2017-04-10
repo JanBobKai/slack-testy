@@ -72,17 +72,15 @@ module.exports = (robot) ->
                 room = res.envelope.room
                 timestamp = new Date/1000|0
                 attachments = [ {
-                    fallback: 'dungeonChars',
+                    fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
                     color: 'danger',
-                    pretext: 'Gebrauchte Charaktere je Dungeon',
+                    pretext: result[0].Name,
                     fields: [ {
-                        title: 'Name',
-                        value: 'result[0].Name',
+                        title: 'Werte',
+                        value: result[0].AllData,
                         short: true
-                    }, {
-                        title: 'RTL',
-                        value: ':heal: | :gazer: | :tank: | :tank:'
-                    }
+                    },
+                    image_url: result[0].Picture
                     ]
                 }, {
                     fallback: 'test',
