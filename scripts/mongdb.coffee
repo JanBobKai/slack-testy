@@ -46,22 +46,15 @@ mongo = require('mongodb').MongoClient
     
 module.exports = (robot) ->
     robot.hear /oac.item (.*)/i, (res) ->
+        searchName = res.match[1].toLowerCase()
+        console.log 'Eingabe: ', searchName
         mdbPw = process.env.MLAB_USER_PW
         url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
         mongo.connect url, (err, db) ->
             if err
                 console.log 'MongoDB: Unable to connect . Error:', err
             else
-                console.log 'MongoDB: Connection established to', url
-            #richtige Tabelle nehmen
-            #col = db.collection('items_de.oac-head.com_2')
-            artistName = res.match[1].toLowerCase()
-            if artistName is ""
-              res.send "kein Name angegeben"
-            else
-            searchName = artistName
-            console.log 'Eingabe: ', searchName
-        
+                console.log 'MongoDB: Connection established to', url                    
 
             #Daten finden
             #col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
