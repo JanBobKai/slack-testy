@@ -1,0 +1,13 @@
+msgData = {
+          channel: msg.envelope.user.name
+          attachments: [
+            {
+              fallback: "Fallback text here.",
+              color: "danger",
+              title: "Title text here"
+              text: "Main body text"
+              mrkdwn_in: ["text"]
+            }
+          ]
+        }
+        robot.adapter.customMessage msgData
