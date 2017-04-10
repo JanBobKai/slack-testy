@@ -17,6 +17,22 @@
 
 #Requiring the Mongodb package
 mongo = require 'mongodb'
+mdbPw = process.env.MLAB_USER_PW
+
+#Creating a MongoClient object
+MongoClient = mongo.MongoClient
+
+#Preparing the URL
+url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
+
+#Connecting to the server
+MongoClient.connect url, (err, db) ->
+if err
+    console.log 'MongoDB: Unable to connect . Error:', err
+else
+    console.log 'MongoDB: Connection established to', url
+#richtige Tabelle nehmen
+col = db.collection('items_de.oac-head.com_2')
     
 module.exports = (robot) ->
   robot.hear /oac.item (.*)/i, (res) ->
@@ -26,23 +42,7 @@ module.exports = (robot) ->
     else
     searchName = artistName
     console.log 'Eingabe: ', searchName
-    mdbPw = process.env.MLAB_USER_PW
-
-    #Creating a MongoClient object
-    MongoClient = mongo.MongoClient
-
-    #Preparing the URL
-    url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
-
-    #Connecting to the server
-    MongoClient.connect url, (err, db) ->
-    if err
-        console.log 'MongoDB: Unable to connect . Error:', err
-    else
-        console.log 'MongoDB: Connection established to', url
-    #richtige Tabelle nehmen
-    col = db.collection('items_de.oac-head.com_2')
-
+    
 
     #Daten finden
     col.find({ Name: /Zit/i } , {'limit':1}).toArray (err, result) ->
