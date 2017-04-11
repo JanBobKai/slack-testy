@@ -69,6 +69,7 @@ module.exports = (robot) ->
 
                 Picurl = result[0].Picture
                 bla = result[0].AllData
+                console.log bla
                 # https://api.slack.com/docs/message-attachments
                 room = res.envelope.room
                 timestamp = new Date/1000|0
@@ -92,6 +93,7 @@ module.exports = (robot) ->
                 }
                 ]
                 attachments.image_url = Picurl
+                attachments.text = bla
                 options = { as_user: true, link_names: 1, attachments: attachments }
 
                 client = robot.adapter.client
