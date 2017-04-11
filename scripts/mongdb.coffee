@@ -69,7 +69,7 @@ module.exports = (robot) ->
 
                 Picurl = result[0].Picture
                 bla = result[0].AllData
-                tname = result[0].Name.ToString()
+                tname = ToString(result[0].Name)
                 console.log 'Blup :', bla
 
                 room= res.envelope.room
