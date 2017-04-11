@@ -83,6 +83,7 @@ module.exports = (robot) ->
                         fallback: 'fallback'
                         pretext: 'Pretext'
                         img_url: 'img_url'
+                        image_url: 'image_url'
                         color: '#EEEEEE'
                         footer: 'resis'
                         footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
@@ -92,6 +93,7 @@ module.exports = (robot) ->
                 payload.content.pretext = pName
                 payload.content.text = pAllData
                 payload.content.img_url = pPicture
+                payload.content.imgage_url = pPicture
                 #Fileds
                 #payload.content.fields.push title: 'title', value: "value", short: true
                 #payload.content.fields[].title = 
