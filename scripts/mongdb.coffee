@@ -67,16 +67,17 @@ module.exports = (robot) ->
                 #Closing connection
                 #db.close()
 
-
+                Picurl = result[0].Picture
+                bla = result[0].AllData
                 # https://api.slack.com/docs/message-attachments
                 room = res.envelope.room
                 timestamp = new Date/1000|0
                 attachments = [ {
                     fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
                     color: 'danger',
-                    pretext: '${result[0].Name}',
-                    text: '${result[0].AllData}',
-                    image_url: '${result[0].Picture}',
+                    pretext: result[0].Name,
+                    text: '#{bla}',
+                    image_url: Picurl,
                     fields: [ {
                         title: 'GearScore',
                         value: '${result[0].GearScore}',
