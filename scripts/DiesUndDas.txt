@@ -1,4 +1,5 @@
 https://github.com/masuilab/slack-hubot/tree/master/scripts
+https://github.com/lmarkus/hubot-conversation
 
 
 http://de.oac-head.com/items/12613/
