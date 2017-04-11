@@ -71,18 +71,19 @@ module.exports = (robot) ->
                 bla = result[0].AllData
                 console.log 'Blup :', bla
 
-                res.send(
-                    attachments: [
-                        {
-                        pretext: Picurl
-                        text: '#{bla}'
-                        title: result[0].Name
-                        fallback: 'error: something bad happened'
-                        color: 'danger'
-                        mrkdwn_in: ['text']
-                        }
-                    ]
-                    )
+                payload = 
+                    message: msg.message
+                        #room: "##{query.room}"
+                    content:
+                        text: ''
+                        fallback: ''
+                        pretext: ''
+                        color: '#EEEEEE'
+                        fields: []
+
+                payload.content.text = "#{result[0].AllData}"
+
+                robot.emit 'slack-attachment', payload 
 
 
               

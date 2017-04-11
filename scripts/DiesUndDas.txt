@@ -106,7 +106,14 @@ robot.emit 'slack-attachment',
 
     http://hal.readthedocs.io/en/latest/adapters/slack.html
     https://www.pagerduty.com/docs/guides/hubot-integration-guide/
+https://github.com/cprater/slack-destiny-bot
 
+
+msgData =
+                channel: msg.message.room
+                text: star.permalink
+                unfurl_links: true
+robot.emit 'slack.attachment', msgData
 
 
 
@@ -137,3 +144,98 @@ robot.emit 'slack-attachment',
 
                 client = robot.adapter.client
                 client.web.chat.postMessage(room, '', options)
+
+
+
+ data =
+          content:
+            fallback: "[#{repoName}] #{userName} #{action} #{title}"
+            pretext: "[<#{repoUrl}|#{repoName}>] #{userName} #{action} <#{url}|#{title}>"
+            color: "#e3e4e6"
+          username: "bot"
+          channel: room
+          icon_url: "https://raw.githubusercontent.com/takezoe/gitbucket/master/src/main/webapp/assets/common/images/gitbucket.png"
+        if action in ["updated", "opened"]
+          data.content.text = body
+        else
+          data.content.text = action
+
+        if action in ["opened", "reopened"]
+          data.content.color = "#468847"
+        if action in ["closed"]
+          data.content.color = "#B94A48"
+
+        @robot.emit "slack.attachment", data
+
+
+
+  payload =
+                    message: msg.message
+                    content:
+                      text: comment.content.replace(/\n/g, '\n')
+                      pretext: issue.summary
+                      title: commentUrl
+                      title_link: commentUrl
+                      fallback: comment.content
+                      color: '#93c400'
+
+                  robot.emit 'slack-attachment', payload
+
+
+
+payload = 
+      message:
+        room: "##{query.room}"
+      content:
+        text: ''
+        fallback: ''
+        pretext: ''
+        color: '#EEEEEE'
+        fields: []
+
+    switch type
+      when 'issues'
+        switch req.body.action
+          when 'opened'
+            payload.content.pretext = "New issue opened: #{req.body.issue.title}\r\n#{req.body.issue.url}"
+            payload.content.text = "#{req.body.issue.body}"
+            payload.content.fields.push title: 'Author', value: "#{req.body.issue.user.login}", short: true
+            payload.content.fields.push title: 'Assignee', value: "#{req.body.issue.assignee.login}", short: true if req.body.issue.assignee?.login?
+            payload.content.fallback = "#{payload.content.pretext}\r\n```#{payload.content.text}```\r\n"
+            payload.content.color = '#00FF00'
+          when 'closed'
+            payload.content.pretext = "Issue closed: #{req.body.issue.title}\r\n#{req.body.issue.url}"
+            payload.content.fields.push title: 'Closed by', value: "#{req.body.issue.user.login}", short: true
+            payload.content.fields.push title: 'Assignee', value: "#{req.body.issue.assignee.login}", short: true if req.body.issue.assignee?.login?
+            payload.content.fallback = "#{payload.content.pretext}\r\n"
+            payload.content.color = '#FF0000'
+
+      when 'push'
+        push = req.body
+        if push.commits.length > 0
+          commitWord = if push.commits.length > 1 then "commits" else "commit"
+          text = ''
+          for commit in push.commits
+            text += "\r\n  * #{commit.message} #{commit.url}"
+        # else
+        #   if push.created
+        #     robot.send user, "#{push.pusher.name} created: #{push.ref}: #{push.base_ref}"
+        #   if push.deleted
+        #     robot.send user, "#{push.pusher.name} deleted: #{push.ref}"
+
+        payload.content.pretext = "Got #{push.commits.length} new #{commitWord} by #{push.commits[0].author.name}"
+        payload.content.text = text
+        # payload.content.fields.push title: 'Author', value: "#{push.commits[0].author.name}", short: true
+        payload.content.fallback = "#{payload.content.pretext}\r\n```#{payload.content.text}```\r\n"
+        payload.content.color = '#00FF00'
+
+      when 'issue_comment'
+        switch req.body.action
+          when 'created'
+            payload.content.pretext = "New comment on issue: #{req.body.issue.title}\r\n#{req.body.comment.issue_url}"
+            payload.content.text = "#{req.body.comment.body}"
+            payload.content.fields.push title: 'Author', value: "#{req.body.issue.user.login}", short: true
+            payload.content.fields.push title: 'Assignee', value: "#{req.body.issue.assignee.login}", short: true if req.body.issue.assignee?.login?
+            payload.content.fallback = "#{payload.content.pretext}\r\n```#{payload.content.text}```\r\n"
+        
+    robot.emit 'slack-attachment', payload                
