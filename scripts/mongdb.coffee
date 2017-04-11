@@ -71,23 +71,25 @@ module.exports = (robot) ->
                 timestamp= new Date/1000|0 
                 
                 payload = 
-
-                    #icon_url: 'icon_url'
-                    #icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
-                    imgage_url: String(result[0].Picture)
                     content:
-                        text: 'text'
-                        fallback: 'fallback'
-                        pretext: 'Pretext'
-                        img_url: 'img_url'
-                        thumb_url: 'thumb_url'
+                        text: ''
+                        fallback: ''
+                        pretext: ''
+                        title: ''
+                        title_link: ''
+                        author_name: ''
+                        author_link: ''
+                        author_icon: ''
+                        thumb_url: ''
                         color: '#EEEEEE'
                         footer: 'resis'
                         footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
                         ts: timestamp
                         fields: []
 
-                payload.content.pretext = String(result[0].Name)
+                payload.content.pretext = 'Dein gesuchter Gegenstand:'
+                payload.content.title = String(result[0].Name)
+                payload.content.title_link = String(resukt[0].url)
                 payload.content.text = String(result[0].AllData)
                 payload.content.thumb_url = String(result[0].Picture)
                 #Fileds
