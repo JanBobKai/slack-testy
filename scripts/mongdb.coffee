@@ -64,9 +64,8 @@ module.exports = (robot) ->
                     console.log err
                 else
                     console.log 'Found: ', result
-                #Closing connection
-                #db.close()
-                if undefined == typeof result[0].name
+
+                if !(result[0].hasOwnProperty(Name))
                     console.log 'nicht in DB: ', searchName
                     res.send "Sorry Item (noch)nicht in der Datenbank"
                     return
