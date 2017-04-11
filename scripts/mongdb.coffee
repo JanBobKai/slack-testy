@@ -72,7 +72,7 @@ module.exports = (robot) ->
                 console.log 'Blup :', bla
 
                 payload = 
-                    message: msg.message
+                    message: res.message
                         #room: "##{query.room}"
                     content:
                         text: ''
