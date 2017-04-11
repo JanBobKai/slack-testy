@@ -72,8 +72,9 @@ module.exports = (robot) ->
                 console.log 'Blup :', bla
 
                 payload = 
-                    message: res.message
-                        #room: "##{query.room}"
+                    channel: res.message.user.name
+                    username: robot.name
+                    icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
                     content:
                         text: ''
                         fallback: ''
