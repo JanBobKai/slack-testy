@@ -70,7 +70,6 @@ module.exports = (robot) ->
                 pPicture = String(result[0].Picture)
                 pAllData = String(result[0].AllData)
                 pName = String(result[0].Name)
-                console.log 'Blup :', bla
 
                 room= res.envelope.room
                 timestamp= new Date/1000|0 
