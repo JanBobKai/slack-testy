@@ -71,20 +71,25 @@ module.exports = (robot) ->
                 bla = result[0].AllData
                 console.log 'Blup :', bla
 
+                room= res.envelope.room
+                timestamp= new Date/1000|0 
+                
                 payload = 
-                    channel: res.message.user.name
-                    username: robot.name
+                    
+                    #channel: res.message.user.name
+                    #username: robot.name
                     icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
                     content:
-                        text: ''
-                        fallback: ''
-                        pretext: ''
+                        text: 'text'
+                        fallback: 'fallback'
+                        pretext: 'pretext'
                         color: '#EEEEEE'
                         fields: []
 
-                payload.content.text = "#{result[0].AllData}"
+                options = { as_user: true, link_names: 1, attachments: payload }
 
-                robot.emit 'slack-attachment', payload 
+                client = robot.adapter.client
+                client.web.chat.postMessage(room, '', options)
 
 
               
