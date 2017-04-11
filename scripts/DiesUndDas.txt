@@ -1,3 +1,23 @@
+function objToString (obj) {
+    var str = '';
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str += p + '::' + obj[p] + '\n';
+        }
+    }
+    return str;
+}
+
+
+
+ String(yourobject);
+
+OR
+
+JSON.stringify(yourobject)
+
+
+
 msgData = {
           channel: msg.envelope.user.name
           attachments: [
