@@ -90,7 +90,7 @@ module.exports = (robot) ->
                         ts: timestamp
                         fields: []
 
-                payload.content.pretext = pName
+                payload.content.pretext = String(result[0].Name)
                 payload.content.text = pAllData
                 payload.content.img_url = pPicture
                 payload.content.imgage_url = pPicture

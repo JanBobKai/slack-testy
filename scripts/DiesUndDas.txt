@@ -1,3 +1,50 @@
+http://de.oac-head.com/items/12613/
+
+Name
+AllData
+Picture
+GearScore
+DropBy
+
+startGame = (game, channelId) ->
+    robot.adapter.client.web.chat.postMessage(channelId, game.print(), {as_user: true})
+    .then (res) ->
+      games[res.ts] = game
+      [EMOJIS.left, EMOJIS.up, EMOJIS.down, EMOJIS.right].reduce((curr, name) ->
+        curr.then(-> robot.adapter.client.web.reactions.add(name, {channel: channelId, timestamp: res.ts}))
+      , Promise.resolve())
+
+  pressButton = (message) ->
+    robotUserId = robot.adapter.client.rtm.dataStore.getUserByName(robot.name).id
+    if message.user is robotUserId
+      return
+    emojiKey = _.findKey EMOJIS, (emoji) -> emoji is message.reaction
+    ts = message.item.ts
+    channelId = message.item.channel
+    game = games[ts]
+    unless game && /^(up|down|left|right)$/.test emojiKey
+      return
+    if game.isClear()
+      return
+    game[emojiKey]()
+    robot.adapter.client.web.chat.update(ts, channelId, game.print())
+    .catch (e) ->
+      if e.message is 'edit_window_closed' and games[ts]?
+        delete games[ts]
+        startGame(game, channelId)
+      else
+robot.logger.error e
+
+
+
+channelId = msg.envelope.room
+
+
+
+
+
+
+
 function objToString (obj) {
     var str = '';
     for (var p in obj) {
