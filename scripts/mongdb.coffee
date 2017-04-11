@@ -67,10 +67,6 @@ module.exports = (robot) ->
                 #Closing connection
                 #db.close()
 
-                pPicture = String(result[0].Picture)
-                pAllData = String(result[0].AllData)
-                pName = String(result[0].Name)
-
                 room= res.envelope.room
                 timestamp= new Date/1000|0 
                 
@@ -78,6 +74,7 @@ module.exports = (robot) ->
 
                     #icon_url: 'icon_url'
                     #icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
+                    img_url: String(result[0].Picture)
                     content:
                         text: 'text'
                         fallback: 'fallback'
@@ -91,9 +88,7 @@ module.exports = (robot) ->
                         fields: []
 
                 payload.content.pretext = String(result[0].Name)
-                payload.content.text = pAllData
-                payload.content.img_url = pPicture
-                payload.content.imgage_url = pPicture
+                payload.content.text = String(result[0].AllData)
                 #Fileds
                 #payload.content.fields.push title: 'title', value: "value", short: true
                 #payload.content.fields[].title = 
