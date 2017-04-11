@@ -80,9 +80,9 @@ module.exports = (robot) ->
                     #username: robot.name
                     icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
                     content:
-                        text: 'text'
+                        text: '#{bla}'
                         fallback: 'fallback'
-                        pretext: 'pretext'
+                        pretext: result[0].Name
                         color: '#EEEEEE'
                         fields: []
 
