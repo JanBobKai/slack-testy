@@ -69,6 +69,7 @@ module.exports = (robot) ->
 
                 Picurl = result[0].Picture
                 bla = result[0].AllData
+                tname = result[0].Name.ToString()
                 console.log 'Blup :', bla
 
                 room= res.envelope.room
@@ -87,7 +88,7 @@ module.exports = (robot) ->
                         color: '#EEEEEE'
                         fields: []
 
-                payload.content.text = 'NachBearb'
+                payload.content.text = tname
                 options = { as_user: true, link_names: 1, attachments: payload }
 
                 client = robot.adapter.client
