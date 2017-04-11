@@ -78,14 +78,16 @@ module.exports = (robot) ->
                     
                     #channel: res.message.user.name
                     #username: robot.name
-                    icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
+                    icon_url: 'icon_url'
+                    #icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
                     content:
-                        text: '#{bla}'
+                        text: 'text'
                         fallback: 'fallback'
-                        pretext: result[0].Name
+                        pretext: 'Pretext'
                         color: '#EEEEEE'
                         fields: []
 
+                payload.content.text = 'NachBearb'
                 options = { as_user: true, link_names: 1, attachments: payload }
 
                 client = robot.adapter.client
