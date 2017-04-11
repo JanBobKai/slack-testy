@@ -67,9 +67,9 @@ module.exports = (robot) ->
                 #Closing connection
                 #db.close()
 
-                Picurl = result[0].Picture
-                bla = result[0].AllData
-                tname = String(result[0].Name)
+                pPicture = String(result[0].Picture)
+                pAllData = String(result[0].AllData)
+                pName = String(result[0].Name)
                 console.log 'Blup :', bla
 
                 room= res.envelope.room
@@ -85,10 +85,14 @@ module.exports = (robot) ->
                         text: 'text'
                         fallback: 'fallback'
                         pretext: 'Pretext'
+                        img_url: 'img_url'
                         color: '#EEEEEE'
                         fields: []
 
-                payload.content.text = tname
+                payload.content.pretext = pName
+                payload.content.text = pAllData
+                payload.content.img_url = pPicture
+
                 options = { as_user: true, link_names: 1, attachments: payload }
 
                 client = robot.adapter.client
