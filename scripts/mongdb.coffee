@@ -75,12 +75,12 @@ module.exports = (robot) ->
                 attachments = [ {
                     fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
                     color: 'danger',
-                    pretext: result[0].Name,
-                    text: '#{bla}',
-                    image_url: Picurl,
+                    pretext: 'Pretext',
+                    text: 'Text',
+                    image_url: 'Image_url',
                     fields: [ {
-                        title: 'GearScore',
-                        value: '${result[0].GearScore}',
+                        title: 'Titel',
+                        value: 'Value',
                         short: true
                     }]
                 }, {
@@ -91,7 +91,7 @@ module.exports = (robot) ->
                     ts: timestamp
                 }
                 ]
-
+                attachments.image_url = Picurl
                 options = { as_user: true, link_names: 1, attachments: attachments }
 
                 client = robot.adapter.client
