@@ -64,3 +64,23 @@ msgData = {
             "ts": 123456789
         }
     ]
+
+
+
+       robot.respond /send attachments/i, (msg) ->
+     msg.send(
+       attachments: [
+         {
+           text: '*error*: something bad happened'
+           fallback: 'error: something bad happened'
+           color: 'danger'
+           mrkdwn_in: ['text']
+         }
+       ]
+     )
+
+db.users.find(name: new RegExp(search)) //For substring search, case sensitive. 
+db.users.find(name: new RegExp('^' + search + '$')) //For exact search, case sensitive
+db.users.find(name: new RegExp(search， ‘i')) //For substring search, case insensitive
+db.users.find(name: new RegExp('^' +search + '$', 'i')); //For exact search, case 
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp
