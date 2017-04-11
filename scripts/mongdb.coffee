@@ -65,7 +65,7 @@ module.exports = (robot) ->
                 else
                     console.log 'Found: ', result
 
-                if !('Name' in result)
+                if result is {}
                     console.log 'nicht in DB: ', searchName
                     res.send "Sorry Item (noch)nicht in der Datenbank"
                     return
