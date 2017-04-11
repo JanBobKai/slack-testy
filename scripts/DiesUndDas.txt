@@ -1,6 +1,5 @@
-if ("undefined" === typeof my_obj.prop){
-    console.log('the property is not available...');
-}
+https://github.com/masuilab/slack-hubot/tree/master/scripts
+
 
 http://de.oac-head.com/items/12613/
 
