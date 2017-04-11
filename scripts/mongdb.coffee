@@ -46,7 +46,7 @@ mongo = require('mongodb').MongoClient
     
 module.exports = (robot) ->
     robot.hear /oac.item (.*)/i, (res) ->
-        searchName = res.match[1].toLowerCase()
+        searchName = res.match[1]#.toLowerCase()
         console.log 'Eingabe: ', searchName
         mdbPw = process.env.MLAB_USER_PW
         url = 'mongodb://Kaimodo:'+mdbPw+'@ds157390.mlab.com:57390/resitems'
@@ -69,7 +69,7 @@ module.exports = (robot) ->
 
                 Picurl = result[0].Picture
                 bla = result[0].AllData
-                console.log bla
+                console.log 'Blup :', bla
 
                 res.send(
                     attachments: [
