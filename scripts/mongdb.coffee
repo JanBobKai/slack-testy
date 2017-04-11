@@ -74,13 +74,13 @@ module.exports = (robot) ->
 
                     #icon_url: 'icon_url'
                     #icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
-                    img_url: String(result[0].Picture)
+                    imgage_url: String(result[0].Picture)
                     content:
                         text: 'text'
                         fallback: 'fallback'
                         pretext: 'Pretext'
                         img_url: 'img_url'
-                        image_url: 'image_url'
+                        thumb_url: 'thumb_url'
                         color: '#EEEEEE'
                         footer: 'resis'
                         footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
@@ -89,6 +89,7 @@ module.exports = (robot) ->
 
                 payload.content.pretext = String(result[0].Name)
                 payload.content.text = String(result[0].AllData)
+                payload.content.thumb_url = String(result[0].Picture)
                 #Fileds
                 #payload.content.fields.push title: 'title', value: "value", short: true
                 #payload.content.fields[].title = 
