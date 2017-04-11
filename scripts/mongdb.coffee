@@ -66,6 +66,9 @@ module.exports = (robot) ->
                     console.log 'Found:', result
                 #Closing connection
                 #db.close()
+                if result[0].Name == undefined
+                    res.send "Sorry Item (noch)nicht in der Datenbank"
+                    return
 
                 room= res.envelope.room
                 timestamp= new Date/1000|0 
