@@ -1,3 +1,7 @@
+if ("undefined" === typeof my_obj.prop){
+    console.log('the property is not available...');
+}
+
 http://de.oac-head.com/items/12613/
 
 Name
