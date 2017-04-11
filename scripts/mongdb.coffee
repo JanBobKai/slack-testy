@@ -75,10 +75,8 @@ module.exports = (robot) ->
                 timestamp= new Date/1000|0 
                 
                 payload = 
-                    
-                    #channel: res.message.user.name
-                    #username: robot.name
-                    icon_url: 'icon_url'
+
+                    #icon_url: 'icon_url'
                     #icon_url: 'https://slack.global.ssl.fastly.net/9fa2/img/services/hubot_128.png'
                     content:
                         text: 'text'
@@ -86,12 +84,17 @@ module.exports = (robot) ->
                         pretext: 'Pretext'
                         img_url: 'img_url'
                         color: '#EEEEEE'
+                        footer: 'resis'
+                        footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
+                        ts: timestamp
                         fields: []
 
                 payload.content.pretext = pName
                 payload.content.text = pAllData
                 payload.content.img_url = pPicture
-
+                #Fileds
+                #payload.content.fields.push title: 'title', value: "value", short: true
+                #payload.content.fields[].title = 
                 options = { as_user: true, link_names: 1, attachments: payload }
 
                 client = robot.adapter.client

@@ -40,7 +40,7 @@ msgData = {
   robot.router.post "/hubot/say", (req, res) ->
 
     room = req.body.room
-    message = req.body.message
+    message = req.body.messagebc 
 
     robot.logger.info "Message '#{message}' received for room #{room}"
 
@@ -259,3 +259,8 @@ payload =
             payload.content.fallback = "#{payload.content.pretext}\r\n```#{payload.content.text}```\r\n"
         
     robot.emit 'slack-attachment', payload                
+ccc
+
+    fv
+
+    ccchhhhhhffhjfrn            v  v n                                                                                 vt                         tg vxyxxxcacxxxxxxaaaaahgfxaullkk kkkkkvvvvvv wwehv
