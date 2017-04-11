@@ -70,31 +70,19 @@ module.exports = (robot) ->
                 Picurl = result[0].Picture
                 bla = result[0].AllData
                 console.log bla
-                # https://api.slack.com/docs/message-attachments
-                room = res.envelope.room
-                timestamp = new Date/1000|0
-                attachments = [ {
-                    fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
-                    color: 'danger',
-                    pretext: 'Pretext',
-                    text: 'Text',
-                    image_url: 'Image_url',
-                    fields: [ {
-                        title: 'Titel',
-                        value: 'Value',
-                        short: true
-                    }]
-                }, {
-                    fallback: 'test',
-                    color: 'grey',
-                    footer: 'resis',
-                    footer_icon: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png',
-                    ts: timestamp
-                }
-                ]
-                attachments.image_url = Picurl
-                attachments.text = bla
-                options = { as_user: true, link_names: 1, attachments: attachments }
 
-                client = robot.adapter.client
-                client.web.chat.postMessage(room, '', options)
+
+
+
+                robot.emit 'slack-attachment',
+                    channel: res.message.user.name
+                    username: robot.name
+                    icon_url: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
+                    content:
+                        fallback: "A thing "
+                        title: result[0].Name
+                        text: "#{bla}"
+                        mrkdwn_in: ['text']
+                        color: '#111111'
+                # https://api.slack.com/docs/message-attachments
+                
