@@ -74,12 +74,12 @@ module.exports = (robot) ->
                 attachments = [ {
                     fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
                     color: 'danger',
-                    pretext: '#{result[0].Name}',
-                    text: '#{result[0].AllData}',
-                    image_url: '#{result[0].Picture}',
+                    pretext: '${result[0].Name}',
+                    text: '${result[0].AllData}',
+                    image_url: '${result[0].Picture}',
                     fields: [ {
                         title: 'GearScore',
-                        value: '#{result[0].GearScore}',
+                        value: '${result[0].GearScore}',
                         short: true
                     }]
                 }, {

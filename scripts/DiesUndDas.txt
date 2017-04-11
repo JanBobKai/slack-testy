@@ -84,3 +84,6 @@ db.users.find(name: new RegExp('^' + search + '$')) //For exact search, case sen
 db.users.find(name: new RegExp(search， ‘i')) //For substring search, case insensitive
 db.users.find(name: new RegExp('^' +search + '$', 'i')); //For exact search, case 
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+
+
+https://thwack.solarwinds.com/thread/78711
