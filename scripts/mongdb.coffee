@@ -71,18 +71,19 @@ module.exports = (robot) ->
                 bla = result[0].AllData
                 console.log bla
 
-
-
-
-                robot.emit 'slack-attachment',
-                    channel: res.message.user.name
-                    username: robot.name
-                    icon_url: 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
-                    content:
-                        fallback: "A thing "
+                res.send(
+                    attachments: [
+                        {
+                        text: '#{bla}'
                         title: result[0].Name
-                        text: "#{bla}"
+                        fallback: 'error: something bad happened'
+                        color: 'danger'
                         mrkdwn_in: ['text']
-                        color: '#111111'
+                        }
+                    ]
+                    )
+
+
+              
                 # https://api.slack.com/docs/message-attachments
                 
