@@ -74,6 +74,7 @@ module.exports = (robot) ->
                 res.send(
                     attachments: [
                         {
+                        pretext: Picurl
                         text: '#{bla}'
                         title: result[0].Name
                         fallback: 'error: something bad happened'
