@@ -75,13 +75,13 @@ module.exports = (robot) ->
                     fallback: 'Kann leider auf deinem Gerät nicht angezeigt werden',
                     color: 'danger',
                     pretext: result[0].Name,
+                    text: result[0].AllData,
+                    image_url: result[0].Picture,
                     fields: [ {
-                        title: 'Werte',
-                        value: result[0].AllData,
+                        title: 'GearScore',
+                        value: result[0].GearScore,
                         short: true
-                    },
-                    image_url: result[0].Picture
-                    ]
+                    }]
                 }, {
                     fallback: 'test',
                     color: 'grey',
