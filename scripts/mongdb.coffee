@@ -89,7 +89,7 @@ module.exports = (robot) ->
 
                 payload.content.pretext = 'Dein gesuchter Gegenstand:'
                 payload.content.title = String(result[0].Name)
-                payload.content.title_link = String(resukt[0].url)
+                payload.content.title_link = String(result[0].url)
                 payload.content.text = String(result[0].AllData)
                 payload.content.thumb_url = String(result[0].Picture)
                 #Fileds
