@@ -20,7 +20,8 @@ Conversation = require('hubot-conversation')
   
 module.exports = (robot) ->
     switchBoard = new Conversation(robot)
-    robot.hear /oc.item (.*)/i, (res) ->        
+    robot.hear /oc.item (.*)/i, (res) ->   
+        nummer = null     
         searchName = res.match[1]#.toLowerCase() if u don't need Case sensitivity
         console.log 'Eingabe: ', searchName
         url = process.env.MLAB_CONN_STRING
