@@ -1,0 +1,136 @@
+#  https://slack.com/oauth/authorize?client_id={client_id}&scope=bot&redirect_uri={redirect_uri}
+# https://slack.com/api/oauth.access?client_id={client_id}&client_secret={client_secret}&code={code}&redirect_uri={redirect_uri}
+
+module.exports = (robot) => {
+  // ここの正規表現でJSONを取得します。
+  robot.respond(/enquete[\s\S]```[\s\S]((?:[\s\S]?.*)+)[\s\S]```/i, async (res) => {
+    let slack = new Slack(config.slack);
+    let inquiryJson = res.match[1];
+    try {
+      let inquiry = JSON.parse(inquiryJson);
+      // ダイレクトメッセージのチャンネルを作成します。
+      // 今回はアンケート作成者にアンケートを投稿します。
+      let channel_id = (await slack.openDirectMessage(res.envelope.user.id)).channel.id;
+      // アンケート回答用のAttachmentsを投稿します。
+      await slack.postAttachments(Inquiry.object2attachments(inquiry), channel_id);
+      // アンケート集計用のAttachmentsを投稿します。
+      await slack.postAttachments(Inquiry.getAggregateAttachments(), res.envelope.room);
+      res.send();
+    } catch(e) {
+      console.log(e);
+    }
+  });
+}
+#
+#
+#
+export class Inquiry {
+  static object2attachments(object) {
+    return object.questions.map( (question, index) => { return {
+      fallback: object.notice,
+      title: question.title,
+      callback_id: index,
+      color: '#0000FF',
+      attachment_type: 'default',
+      actions: question.choices.map( (choice, index) => { return {
+          name: index,
+          text: choice,
+          type: 'button',
+          value: choice
+      }})
+    }});
+  }
+  static getAggregateAttachments() {
+    return [
+      {
+        fallback: '集計する',
+        title: '集計する',
+        callback_id: 'aggregate',
+        color: '#0000FF',
+        attachment_type: 'default',
+        actions: [
+          {
+            name: 'aggregate',
+            text: '集計する',
+            type: 'button',
+            value: 'aggregate'
+          }
+        ]
+      }
+    ];
+  }
+}
+#
+#
+#
+let answers = {};
+router.post('/', async (req, res) => {
+  let params = JSON.parse(req.body.payload);
+
+  // 集計時の処理
+  if (/^aggregate$/.test(params.callback_id)) {
+    await aggregateProcess(params);
+  }
+  // アンケート回答時の処理
+  else {
+    await answerProcess(params);
+  }
+  res.send();
+});
+#
+#
+#
+async function answerProcess(params) {
+  let index = params.callback_id;
+  let original_attachments = params.original_message.attachments;
+  // アンケートの質問を取得します。
+  let question = original_attachments[index].title;
+  // アンケートの回答を取得します。
+  let answer   = params.actions[0].value;
+  
+  // アンケート結果をオブジェクトに保持しておきます。
+  let userAnswers = answers[params.user.name] || {};
+  userAnswers[question] = answer;
+  answers[params.user.name] = userAnswers;
+
+  // アンケート回答箇所だけSlackの表示を書き換えます。
+  original_attachments[index] = {
+    title: question,
+    text: answer,
+    color: '#00FF00'
+  }
+  // Slack Web APIにリクエストを送ってSlackのメッセージを更新します。
+  await new Slack(config.slack).updateAttachments(
+    params.message_ts,
+    original_attachments,
+    params.channel.id
+  );
+}
+#
+#
+#
+let answers = {};
+router.post('/', async (req, res) => {
+  let params = JSON.parse(req.body.payload);
+
+  // 集計時の処理
+  if (/^aggregate$/.test(params.callback_id)) {
+    await aggregateProcess(params);
+  }
+  // アンケート回答時の処理
+  else {
+    await answerProcess(params);
+  }
+  res.send();
+});
+#
+#
+#
+async function aggregateProcess(params) {
+  // JSONを整形してSlackに投稿します。
+  await new Slack(config.slack).postMessage(
+    "```\n" + JSON.stringify(answers, null, '  ') + "\n```",
+    params.channel.id
+  );
+  answers = {};
+}

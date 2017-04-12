@@ -14,11 +14,13 @@
 #   Kaimodo
 
 mongo = require('mongodb').MongoClient
+Conversation = require('hubot-conversation')
 
 #Connecting to the server
   
 module.exports = (robot) ->
-    robot.hear /oc.item (.*)/i, (res) ->
+    switchBoard = new Conversation(robot)
+    robot.hear /oc.item (.*)/i, (res) ->        
         searchName = res.match[1]#.toLowerCase() if u don't need Case sensitivity
         console.log 'Eingabe: ', searchName
         url = process.env.MLAB_CONN_STRING
@@ -40,6 +42,25 @@ module.exports = (robot) ->
                     console.log 'nicht in DB: ', searchName
                     res.send "Sorry Item (noch)nicht in der Datenbank"
                     return
+                
+                dialog = switchBoard.startDialog(res)
+                res.reply 'Welches Item soll gesendet werden?'
+                dialog.addChoice /1/i, (msg2) ->
+                    msg2.reply 'Ok Item Eins!'
+                    nummer = 1
+                    return
+                dialog.addChoice /2/i, (msg3) ->
+                    msg3.reply 'Ok Item Zwei!'
+                    nummer = 2
+                    return
+                dialog.addChoice /3/i, (msg4) ->
+                    msg4.reply 'Ok Item Drei!'
+                    nummer = 3
+                    return
+
+
+
+                console.log 'nummer = ', nummer
 
                 #Prepare Message
                 room= res.envelope.room

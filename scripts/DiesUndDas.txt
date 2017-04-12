@@ -1,6 +1,26 @@
 buttons
 http://blog.engineer.adways.net/entry/2017/02/10/180000
 
+https://github.com/alleyinteractive/hubot-code-review
+https://gist.github.com/yue82/bd2c3eb7f5434da7a1537d24d7f645cd
+http://yuelab82.hatenablog.com/entry/slack_button_api_1
+
+1 attachments利用方法の変更 robot.emit 'slack.attachment', <attachements data> から msg.send <attachments data> に変更になった 
+robot.respond /attachments test$/i, (msg) -> data = attachments: [ text: '*error*: something bad happened' color: 'danger' mrkdwn_in: ['text'] ] msg.send data 
+robot.adapter.client.rtm.dataStore.getUserByName('knjcode') # hubot-slack v4
+robot.adapter.client.rtm.dataStore.getUserById('U0MU03G5V').name # => knjcode
+robot.adapter.client.rtm.dataStore.getUserByName('knjcode').id
+robot.adapter.client.getChannelGroupOrDMByID('C03NM270D').name # => general hubot-slack v4 
+ msg.envelope.user.id robot.adapter.client.rtm.dataStore.users[userId].profile.image_48 # => "https://a.slack-edge.com/2fac/plugins/slackbot/assets/service_48.png
+ robot.adapter.client.web.chat.postMessage(msg.envelope.room, 'hello')
+ robot.adapter.client.rtm.on 'raw_message', (msg) -> message = JSON.parse msg if message.type is 'presence_change' console.log message 
+  robot.hear /lenna/i, (msg) -> data = file: fs.createReadStream('lenna.png') channels: msg.envelope.room robot.adapter.client.web.files.upload("lenna.png", data) 
+  robot.react (msg) -> robot.logger.debug msg.message.type, msg.message.reaction if msg.message.type == "added" data = channel: msg.message.item.channel timestamp: msg.message.item.ts robot.adapter.client.web.reactions.add(msg.message.reaction, data) 
+  
+
+
+
+
 
 https://github.com/masuilab/slack-hubot/tree/master/scripts
 https://github.com/lmarkus/hubot-conversation
