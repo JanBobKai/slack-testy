@@ -9,6 +9,7 @@
   "hubot-maps",
   "hubot-postgres-brain",
   "hubot-slack-soukoban",
+  "hubot-dynamic-conversation",
   "hubot-rules",
   "hubot-shipit",
   "hubot-ambush",
