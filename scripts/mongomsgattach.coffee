@@ -47,10 +47,10 @@ module.exports = (robot) ->
                 dialog = switchBoard.startDialog(res)
                 res.reply 'Welches Item soll gesendet werden?\n'+result[0].Name+'\n'+result[1].Name+'\n'+result[2].Name+'\n'
                 dialog.addChoice /1/i, (msg2) ->
-                    msg2.reply 'Ok Item Eins!'
+                    #msg2.reply 'Ok Item Eins!'
                     nummer = 0
                     room= res.envelope.room
-                    timestamp= new Date/1000|0                     
+                    timestamp= new Date/1000|0
                     # Attachment "Prototype"
                     payload = 
                         content:
@@ -89,10 +89,10 @@ module.exports = (robot) ->
                     client.web.chat.postMessage(room, '', options)
                     return
                 dialog.addChoice /2/i, (msg3) ->
-                    msg3.reply 'Ok Item Zwei!'
+                    #msg3.reply 'Ok Item Zwei!'
                     nummer = 1
                     room= res.envelope.room
-                    timestamp= new Date/1000|0                     
+                    timestamp= new Date/1000|0
                     # Attachment "Prototype"
                     payload = 
                         content:
@@ -131,10 +131,10 @@ module.exports = (robot) ->
                     client.web.chat.postMessage(room, '', options)
                     return
                 dialog.addChoice /3/i, (msg4) ->
-                    msg4.reply 'Ok Item Drei!'
+                    #msg4.reply 'Ok Item Drei!'
                     nummer = 2
                     room= res.envelope.room
-                    timestamp= new Date/1000|0                     
+                    timestamp= new Date/1000|0
                     # Attachment "Prototype"
                     payload = 
                         content:
