@@ -53,6 +53,46 @@ module.exports = (robot) ->
                 dialog.addChoice /2/i, (msg3) ->
                     msg3.reply 'Ok Item Zwei!'
                     nummer = 2
+                    room= res.envelope.room
+                    timestamp= new Date/1000|0 
+                    
+                    # Attachment "Prototype"
+                    payload = 
+                        content:
+                            text: ''
+                            fallback: ''
+                            pretext: ''
+                            title: ''
+                            title_link: ''
+                            author_name: ''
+                            author_link: ''
+                            author_icon: ''
+                            thumb_url: ''
+                            color: ''
+                            footer: ''
+                            footer_icon: ''
+                            ts: ''
+                            fields: []
+
+                    # Fill in Data in Attachment
+                    payload.content.pretext = 'Dein gesuchter Gegenstand:'
+                    payload.content.title = String(result[0].Name)
+                    payload.content.title_link = String(result[0].url)
+                    payload.content.text = String(result[0].AllData)
+                    payload.content.thumb_url = String(result[0].Picture)
+                    payload.content.color = '#EEEEEE'
+                    payload.content.footer = 'Resis'
+                    payload.content.footer_icon = 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
+                    payload.content.ts = timestamp
+                    
+                    #Fileds How-to, if u need em
+                    #payload.content.fields.push title: 'title', value: "value", short: true
+                    #payload.content.fields[].title = 
+                    options = { as_user: true, link_names: 1, attachments: payload }
+
+                    # send Msg
+                    client = robot.adapter.client
+                    client.web.chat.postMessage(room, '', options)
                     return
                 dialog.addChoice /3/i, (msg4) ->
                     msg4.reply 'Ok Item Drei!'
@@ -64,43 +104,4 @@ module.exports = (robot) ->
                 console.log 'nummer = ', nummer
 
                 #Prepare Message
-                room= res.envelope.room
-                timestamp= new Date/1000|0 
-                
-                # Attachment "Prototype"
-                payload = 
-                    content:
-                        text: ''
-                        fallback: ''
-                        pretext: ''
-                        title: ''
-                        title_link: ''
-                        author_name: ''
-                        author_link: ''
-                        author_icon: ''
-                        thumb_url: ''
-                        color: ''
-                        footer: ''
-                        footer_icon: ''
-                        ts: ''
-                        fields: []
-
-                # Fill in Data in Attachment
-                payload.content.pretext = 'Dein gesuchter Gegenstand:'
-                payload.content.title = String(result[0].Name)
-                payload.content.title_link = String(result[0].url)
-                payload.content.text = String(result[0].AllData)
-                payload.content.thumb_url = String(result[0].Picture)
-                payload.content.color = '#EEEEEE'
-                payload.content.footer = 'Resis'
-                payload.content.footer_icon = 'https://avatars.slack-edge.com/2017-03-09/151204178657_8ed2b3731b17d14bfdf9_48.png'
-                payload.content.ts = timestamp
-                
-                #Fileds How-to, if u need em
-                #payload.content.fields.push title: 'title', value: "value", short: true
-                #payload.content.fields[].title = 
-                options = { as_user: true, link_names: 1, attachments: payload }
-
-                # send Msg
-                client = robot.adapter.client
-                client.web.chat.postMessage(room, '', options)                
+                                
