@@ -64,10 +64,10 @@ module.exports = (robot) ->
   ###
   # .* = matches anything; we access the entire matching string using match[0]
   # for using regex, use this tool: http://regexpal.com/
-  robot.hear /.*!.*/, (msg) ->
+  #robot.hear /.*!.*/, (msg) ->
     # send back the same message
     # reply prefixes the user's name in front of the text
-    msg.reply msg.match[0]
+    #msg.reply msg.match[0]
 
   ###
   # Example of building an external endpoint (that lives on your heroku app) for others things to trigger your bot to do stuff
