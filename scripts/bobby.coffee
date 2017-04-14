@@ -19,8 +19,10 @@ module.exports = (robot) ->
             color: ''
             footer: ''
             footer_icon: ''
+            callback_id: ''
             ts: ''
             fields: []
+            actions: []
     # Fill in Data in Attachment
     payload.content.pretext = 'Bibby Burger :whopper:'
     #payload.content.title = String(result[nummer].Name)
@@ -34,7 +36,10 @@ module.exports = (robot) ->
     
     #Fileds How-to, if u need em
     #payload.content.fields.push title: 'title', value: "value", short: true
-    #payload.content.fields[].title = 
+    #actions-how2
+    #an Url geht callbackid,buttonName und buttonValue
+    #payload.content.actions.push name: 'name', text: 'text', style: 'danger', type: 'button', value: 'wert'
+    payload.content.actions.push name: 'button1', text: 'Jain', style: 'danger', type: 'button', value: 'wert'
     options = { as_user: true, link_names: 1, attachments: payload }
 
     # send Msg

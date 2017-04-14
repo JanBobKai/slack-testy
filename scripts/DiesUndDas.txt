@@ -1,4 +1,7 @@
 buttons
+https://archive.bunnyhop.jp/lab-20141020/
+https://github.com/matiassingers/awesome-slack
+https://github.com/adammulligan/gifmatic
 https://github.com/eedevops/hubot-enterprise/wiki#hubotenterprise-wiki
 https://translate.google.com/translate?hl=en&sl=auto&tl=de&u=http%3A%2F%2Fqiita.com%2Fpunchdrunker%2Fitems%2Fdb9c824397e3affbb210&sandbox=1
 http://blog.engineer.adways.net/entry/2017/02/10/180000
@@ -336,8 +339,3 @@ payload =
             payload.content.fallback = "#{payload.content.pretext}\r\n```#{payload.content.text}```\r\n"
         
     robot.emit 'slack-attachment', payload                
-ccc
-
-    fv
-
-    ccchhhhhhffhjfrn            v  v n                                                                                 vt                         tg vxyxxxcacxxxxxxaaaaahgfxaullkk kkkkkvvvvvv wwehv
