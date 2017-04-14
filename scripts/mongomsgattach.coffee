@@ -45,7 +45,7 @@ module.exports = (robot) ->
                     return
                 
                 dialog = switchBoard.startDialog(res)
-                res.reply 'Welches Item soll gesendet werden?\n'+result[0].Name+'\n'+result[1].Name+'\n'+result[2].Name+'\n'
+                res.reply 'Welches Item soll gesendet werden?\n1) '+result[0].Name+'\n2) '+result[1].Name+'\n3) '+result[2].Name+'\n'
                 dialog.addChoice /1/i, (msg2) ->
                     #msg2.reply 'Ok Item Eins!'
                     nummer = 0
