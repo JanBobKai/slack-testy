@@ -25,7 +25,7 @@ robot.adapter.client.getChannelGroupOrDMByID('C03NM270D').name # => general hubo
 
 
 
-
+https://github.com/ankorite/hubot-ada/tree/master/scripts
 
 https://github.com/masuilab/slack-hubot/tree/master/scripts
 https://github.com/lmarkus/hubot-conversation

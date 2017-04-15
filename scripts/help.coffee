@@ -10,12 +10,16 @@
 #
 # Notes:
 #   These commands are grabbed from comment blocks at the top of each file.
+#
+
 
 helpContents = (name, commands) ->
 
   """
+<!DOCTYPE html>
 <html>
   <head>
+  <meta charset="utf-8">
   <title>#{name} Help</title>
   <style type="text/css">
     body {
@@ -51,7 +55,7 @@ helpContents = (name, commands) ->
   """
 
 module.exports = (robot) ->
-  robot.respond /hilfe\s*(.*)?$/i, (msg) ->
+  robot.respond /help\s*(.*)?$/i, (msg) ->
     cmds = robot.helpCommands()
     filter = msg.match[1]
 
@@ -59,17 +63,22 @@ module.exports = (robot) ->
       cmds = cmds.filter (cmd) ->
         cmd.match new RegExp(filter, 'i')
       if cmds.length == 0
-        msg.send "No available commands match #{filter}"
+        msg.send "kein Kommando gefunden mit Name #{filter}"
         return
 
-    prefix = robot.alias or "#{robot.name} "
+    prefix = robot.alias or robot.name
     cmds = cmds.map (cmd) ->
-      cmd = cmd.replace /^hubot /, prefix
+      cmd = cmd.replace /^hubot/, prefix
       cmd.replace /hubot/ig, robot.name
 
-    emit = cmds.join "\n"
 
-    msg.send emit
+    msg.message.reply_to = msg.envelope.user.id
+
+#    robot.adapter.send msg.message, cmds.join "\n"
+
+    msg.message.reply_to = null
+
+    msg.reply 'Das sind alle meine Kommandos, auch hier zu finden: https://immense-earth-84954.herokuapp.com/resis/help'
 
   robot.router.get "/#{robot.name}/help", (req, res) ->
     cmds = robot.helpCommands().map (cmd) ->
