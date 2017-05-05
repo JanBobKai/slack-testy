@@ -22,6 +22,5 @@
     "hubot-auth",
     "hubot-oac",
     "hubot-cron",
-    "hubot-slack-attachment",
-    "hubot-slack-reaction"
+    "hubot-slack-attachment"
 ]
