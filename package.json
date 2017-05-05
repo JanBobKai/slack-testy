@@ -5,6 +5,7 @@
   "author": "Kaimodo <kaikrutscho@gmail.com>",
   "description": "Schlampe für alles",
   "dependencies": {
+    "@types/request": "0.0.43",
     "hubot": "^2.19.0",
     "hubot-ambush": "0.0.3",
     "hubot-auth": "^2.1.0",
@@ -33,7 +34,8 @@
     "hubot-slack-soukoban": "0.2.0",
     "hubot-team": "^2.0.0",
     "hubot-youtube": "^1.0.2",
-    "mongodb": "2.2.25"
+    "mongodb": "2.2.25",
+    "request": "2.81.0"
   },
   "engines": {
     "node": "0.10.x"
