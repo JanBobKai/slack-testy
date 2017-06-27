@@ -8,20 +8,12 @@
     "hubot-pugme",
     "hubot-maps",
     "hubot-postgres-brain",
-    "hubot-slack-soukoban",
-    "hubot-rules",
-    "hubot-shipit",
-    "hubot-ambush",
-    "hubot-seen",
-    "hubot-darts",
-    "hubot-plusplus",
+    "Hubot-ambush",
     "hubot-youtube",
     "hubot-google-translate",
     "hubot-googleapi",
-    "hubot-team",
     "hubot-auth",
     "hubot-oac",
     "hubot-cron",
-    "hubot-slack-attachment",
-    "hubot-slack-vote"
+    "hubot-slack-attachment"
 ]
